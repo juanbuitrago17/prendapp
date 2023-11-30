@@ -8,7 +8,7 @@
     <link href="stylesTablas.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    <title>Inicio crud</title>
+    <title>BASE DE DATOS</title>
 </head>
 <body>
 <div class="d-flex" id="content-wrapper">
@@ -49,9 +49,12 @@
                                     <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
                                         alt="https://generated.photos/" />
                                     <styl style="color: aliceblue;">
-                                    <a href="#">Cerrar sesión</a>
-                
+                                    Cerrar sesión
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="login.php">Cerrar sesion</a>
+                                    </div>
                             </li>
                         </ul>
                     </div>

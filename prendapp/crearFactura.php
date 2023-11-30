@@ -16,7 +16,7 @@
 
            <div class="input-box">
                 <label for="id_venta">Seleccione el id de la venta:</label>
-                <select name="id_venta" id="id_venta">
+                <select name="id_venta" class="input-control" id="id_venta">
                 <?php
                     include_once "conexion.php";
                     $sql= mysqli_query($conn,"SELECT id_venta FROM venta");

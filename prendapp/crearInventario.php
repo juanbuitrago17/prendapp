@@ -17,7 +17,7 @@
         
     <div class="input-box">
              <label for="id_producto">Seleccione el nombre del producto:</label>
-                <select name="id_producto" id="id_producto">
+                <select name="id_producto" class="input-control" id="id_producto">
                     <?php
                     $valida = true;
                     include_once "conexion.php";

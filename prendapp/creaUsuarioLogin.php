@@ -184,7 +184,7 @@
        
         <br />
         
-         <h3><a href="indexUsuario.php" class="t-text">VOLVER</a></h3>
+         <h3><a href="login.php" class="t-text">VOLVER</a></h3>
         
      
     </form>
@@ -230,7 +230,7 @@ if(isset($_POST["crearUsuarios"])){
 
 
     function seCreo(){
-        echo "<script>alert('Se registró el usuario'); window.location.href = 'indexUsuario.php';</script>";
+        echo "<script>alert('Se registró el usuario'); window.location.href = 'login.php';</script>";
     }
     function noSeCreo() {
         echo "<script>alert('No se pudo registrar el usuario');</script>";

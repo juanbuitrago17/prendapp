@@ -17,7 +17,7 @@
             <h4 class="text-light font-weight-bold mb-0">DATOS</h4>
         </div>
         <div class="menu">
-                <a href="index.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
+                <a href="indexUsuario.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
                     USUARIO</a>
                 <a href="indexFactura.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
                     FACTURA</a>
@@ -48,9 +48,12 @@
                                 <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
                                     alt="https://generated.photos/" />
                                 <styl style="color: aliceblue;">
-                                <a href="#">Cerrar sesión</a>
-         
+                                Cerrar sesión
                             </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="login.php">Cerrar sesion</a>
+                                    </div>
                         </li>
                     </ul>
                 </div>

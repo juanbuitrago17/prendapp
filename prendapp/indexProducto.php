@@ -17,9 +17,7 @@
              <h4 class="text-light font-weight-bold mb-0">DATOS</h4>
          </div>
          <div class="menu">
-             <a href="cliente.aspx" class="d-block text-light p-3 border-0"><i class="icon ion-md-apps lead mr-2"></i>
-                 Pagina Principal</a>
-             <a href="index.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
+             <a href="indexUsuario.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
                  USUARIO</a>
             <a href="indexInventario.php" class="d-block text-light p-3 border-0"><i class="icon ion-md-settings lead mr-2"></i>
                 INVENTARIO</a>
@@ -50,14 +48,13 @@
                                  <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
                                      alt="https://generated.photos/" />
                                  <styl style="color: aliceblue;">
-                                 Usuario
+                                 Cerrar sesión
              
                              </a>
                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                 <a class="dropdown-item" href="#">Mi perfil</a>
-                                 <div class="dropdown-divider"></div>
-                                 <a class="dropdown-item" href="inicio.aspx">Cerrar sesión</a>
-                             </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="login.php">Cerrar sesion</a>
+                            </div>
                          </li>
                      </ul>
                  </div>

@@ -72,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
         }
             
            ?>
+            </div>
 
           <div class="input-box" >
        <label for="telefono">Ingrese su telefono:</label>
@@ -133,6 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
         }
     }
       ?>
+       </div>
       <div class="input-box">
        <label for="txtciudad">Ingrese su ciudad:</label>
       <input type="text" name="ciudad" value="<?php echo isset($usuario['ciudad']) ? $usuario['ciudad'] : ''; ?>"   class="input-control" ></input>
@@ -152,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
             }
         }
             ?>
-
+ </div>
           <div class="input-box" >
        <label for="username">Ingrese un usuario:</label>
       <input type="text" name="username" value="<?php echo isset($usuario['username']) ? $usuario['username'] : ''; ?>" class="input-control" ></input>
@@ -174,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
        
        <br />
        
-        <h3><a href="index.php" class="t-text">VOLVER</a></h3>
+        <h3><a href="indexUsuario.php" class="t-text">VOLVER</a></h3>
        
     
    </form>   
@@ -183,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
             </form>
         </div>
     
-    </di
+    </div>
 </div>
 </section>
 
@@ -203,7 +205,7 @@ if (isset($_POST["actualizarUsuarios"])) {
  
     function seCreo()
     {
-        echo "<script>alert('Se actualizo el usuario'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Se actualizo el usuario'); window.location.href = 'indexUsuario.php';</script>";
     }
 
     function noSeCreo()

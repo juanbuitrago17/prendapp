@@ -16,7 +16,7 @@
 
     <div class="input-box">
              <label for="cedula">Seleccione el nombre del comprador:</label>
-                <select name="cedula" id="cedula">
+                <select name="cedula" class="input-control" id="cedula">
                 <?php
                     $valida = true;
                     include_once "conexion.php";
@@ -32,13 +32,13 @@
 
             <div class="input-box">
             <label for="id_inventario">Seleccione el id del inventario:</label>
-            <select name="id_inventario" id="id_inventario">
+            <select name="id_inventario" class="input-control" id="id_inventario">
                 <?php
                     include_once "conexion.php";
                     $sql= mysqli_query($conn,"SELECT id_inventario FROM inventario");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option value='" . $fila['id_inventario'] . "'>" . $fila['id_inventario'] . "</option>";
+                            echo "<option  value='" . $fila['id_inventario'] . "'>" . $fila['id_inventario'] . "</option>";
                         }
                     }
                 ?>

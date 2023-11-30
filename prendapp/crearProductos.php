@@ -15,7 +15,7 @@
             <form id="form3" method="post" action="crearProductos.php">
                     <div class="input-box">
                         <label for="cedula">Seleccione el nombre del vendedor:</label>
-                        <select name="cedula" id="cedula">
+                        <select name="cedula" class="input-control" id="cedula">
                             <?php
                             include_once "conexion.php";
                             $sql= mysqli_query($conn,"SELECT cedula, nombre FROM usuario");
