@@ -1,3 +1,12 @@
+<?php
+session_start();
+$cedula = $_SESSION['cedula'];
+$rol= $_SESSION['rol'];
+if(empty($cedula) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -67,8 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_inventario'])) {
 
          <center><input type="submit" value="Actualizar" name="actualizarInventario" class="button button2"></td> </center><br />
         <br /><br />
-        
-         <h3>  <a href="indexInventario.php" class="t-text">VOLVER</a></h3>
+
+        <?php
+                if($rol=="ADMINISTRADOR"){
+                    echo "<h3>  <a href='indexInventario.php' class='t-text'>VOLVER</a></h3>";
+                }else {
+                   echo "<h3>  <a href='indexInventario.php' class='t-text'>VOLVER</a></h3>";
+                }
+                ?>
         
      
     </form>
@@ -89,9 +104,14 @@ if (isset($_POST["actualizarInventario"])) {
 
     $sql = "UPDATE inventario SET cantidad='$cantidad', fechaActualizacion='$fechaActualizacion' WHERE id_inventario='$id_inventario'";
 
-    function seCreo()
-    {
-        echo "<script>alert('Se actualizo el inventario'); window.location.href = 'indexInventario.php';</script>";
+    function seCreo(){
+    $paginaDestino = 'inventario.php' ;
+
+        if($rol=="ADMINISTRADOR"){
+            $paginaDestino =  'indexInventario.php'; 
+        }
+    
+        echo "<script>alert('Se actualizo el inventario'); window.location.href = '$paginaDestino';</script>";
     }
     function noSeCreo()
     {

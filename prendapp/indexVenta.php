@@ -48,11 +48,11 @@
                                 <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
                                     alt="https://generated.photos/" />
                                 <styl style="color: aliceblue;">
-                                Cerrar sesión
+                                Menu
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="login.php">Cerrar sesion</a>
+                                    <a class="dropdown-item" href="cerrarSesion.php">Cerrar sesion</a>
                                     </div>
                         </li>
                     </ul>

@@ -147,6 +147,20 @@ if(empty($cedula) || empty($rol)){
                             }
                         ?>
                     </div>
+                    <div class="input-box">
+                        <label for="url_imagen">Ingrese la url de la imagen del producto:</label>
+                        <input type="text" name="url_imagen"  class="input-control"></input>
+                        <?php
+                        $valida = true;
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                            $url_imagen = $_POST["url_imagen"];
+                            if(empty($url_imagen)){
+                                echo"<p class='p'>El campo es obligatorio</p>";
+                                $valida = false;
+                            }
+                        }
+                        ?>
+                    </div>
                     
                     
                     <script>
@@ -192,10 +206,11 @@ if(empty($cedula) || empty($rol)){
     $genero = $_POST["genero"];
     $talla= $_POST["talla"];
     $color = $_POST["color"];
+    $url_imagen = $_POST["url_imagen"];
 
     if($valida == True){
     include_once "conexion.php";
-    $sql= "INSERT INTO producto(cedula,nombre,precio,clima,genero,talla,color) VALUES ('$cedulaVendedor','$nombre','$precio','$clima','$genero','$talla','$color')";
+    $sql= "INSERT INTO producto(cedula,nombre,precio,clima,genero,talla,color,url_imagen) VALUES ('$cedulaVendedor','$nombre','$precio','$clima','$genero','$talla','$color','$url_imagen')";
     
     
     function seCreo(){

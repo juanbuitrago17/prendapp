@@ -1,3 +1,12 @@
+<?php
+session_start();
+$cedula = $_SESSION['cedula'];
+$rol= $_SESSION['rol'];
+if(empty($cedula) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -168,6 +177,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_producto'])) {
                         }
                         ?>
                     </div>
+                    <div class="input-box">
+                        <label for="url_imagen">Ingrese la url de la imagen del producto:</label>
+                        <input type="text" name="url_imagen"  class="input-control"></input>
+                        <?php
+                        if(isset($_POST["actualizarProducto"])){
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                            $url_imagen = $_POST["url_imagen"];
+                            if(empty($url_imagen)){
+                                echo"<p class='p'>El campo es obligatorio</p>";
+                                $valida = false;
+                            }
+                        }
+                    }
+                        ?>
+                    </div>
                     <script>
                         function validateColorInput(event) {
                             var keyCode = event.keyCode || event.which;
@@ -184,12 +208,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_producto'])) {
                     </script>
 
 
-<center><input type="submit" value="Actualizar" name="actualizarProducto" class="button button2"></td> </center><br />
+            <center><input type="submit" value="Actualizar" name="actualizarProducto" class="button button2"></td> </center><br />
                     <br />
-  
                     <br />
-
-                    <h3><a href="indexProducto.php" class="t-text">VOLVER</a></h3>
+                    <?php
+                    if($rol=="ADMINISTRADOR"){
+                    echo "<h3><a href='indexProducto.php' class='t-text'>VOLVER</a></h3>";
+                    }else {
+                    echo "<h3><a href='inventario.php' class='t-text'>VOLVER</a></h3>";
+                    }
+                    ?>
 
 
                 </form>
@@ -209,16 +237,21 @@ if(isset($_POST["actualizarProducto"])){
     $talla = $_POST["talla"];
     $precio = $_POST["precio"];
     $clima = $_POST["clima"];
-
+    $url_imagen = $_POST["url_imagen"];
     
 
     if($valida == True){
         include_once "conexion.php";
     
-    $sql = "UPDATE producto SET nombre='$nombre', color='$color', genero='$genero', talla='$talla', precio='$precio', clima='$clima' WHERE id_producto='$id_producto'";
+    $sql = "UPDATE producto SET nombre='$nombre', color='$color', genero='$genero', talla='$talla', precio='$precio', clima='$clima', url_imagen='$url_imagen' WHERE id_producto='$id_producto'";
     
-    function seCreo(){   
-        echo "<script>alert('Se actualizo el producto'); window.location.href = 'indexProducto.php';</script>";
+    function seCreo(){ 
+        $paginaDestino = 'inventario.php' ;
+
+        if($rol=="ADMINISTRADOR"){
+            $paginaDestino =  'indexProducto.php'; 
+        }  
+        echo "<script>alert('Se actualizo el producto'); window.location.href = '$paginaDestino';</script>";
     } 
     function noSeCreo() { 
         echo "<script>alert('No se pudo actualizar el producto');</script>"; 

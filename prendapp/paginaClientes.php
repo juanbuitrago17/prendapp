@@ -29,6 +29,8 @@ if(empty($usuario) || empty($rol)){
             <ul>
                 <li><a href="#nostros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                
+                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion </a></li>
                 <li style="float:right">
                 <?php
                 if($rol == 'CLIENTE'){
@@ -38,9 +40,6 @@ if(empty($usuario) || empty($rol)){
                 }
                 ?>
                 </li>
-                
-                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion </a></li>
-                
                 </form>
             </ul>
         </div>
