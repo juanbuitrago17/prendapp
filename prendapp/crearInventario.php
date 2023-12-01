@@ -24,7 +24,7 @@
                     $sql= mysqli_query($conn,"SELECT id_producto, nombre FROM producto");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option value='" . $fila['id_producto'] . "'>" . $fila['nombre'] . "</option>";
+                            echo "<option value='" . $fila['id_producto'] . "'style='color:black'>" . $fila['nombre'] . "</option>";
                         }
                     }
                     ?>

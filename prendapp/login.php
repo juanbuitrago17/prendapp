@@ -44,7 +44,6 @@
     ?>
     <?php
     
-    session_start();
     include_once "conexion.php";
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -55,11 +54,23 @@
     $resultado=$conn->query($consulta);
     
     if ($resultado->num_rows == 1){
-        $_SESSION["usuario"]=$usuario;
-        if($usuario == "juanpablo17" && $contrasena == "1234567"){
-            header("Location: indexUsuario.php");
-        }else{
-            header("Location: paginaClientes.php");
+        $fila = $resultado->fetch_assoc();
+        session_start();
+        $rolActual = $fila["rol"];
+        $cedula = $fila["cedula"];
+        $_SESSION["usuario"]=$fila["username"];
+        $_SESSION["rol"] = $rolActual;
+        $_SESSION["cedula"] = $cedula;
+        print_r($_SESSION);
+
+        switch($rolActual){
+            case 'CLIENTE':
+            case 'VENDEDOR':
+                header("Location: paginaClientes.php");
+                break;
+            case 'ADMINISTRADOR':
+                header("Location: indexUsuario.php");
+                break;
         }
         
     }else {

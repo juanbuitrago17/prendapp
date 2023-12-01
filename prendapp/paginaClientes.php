@@ -1,3 +1,14 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,20 +29,18 @@
             <ul>
                 <li><a href="#nostros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
-                <li style="float:right"><a class="active" href="login.php" >Cerrar Sesion</a></li>
-                
-                <li style="float:right"><form name="form12" method="post" action="paginaCliente.php">
-                <input type="submit" value="Vender" name="vendedor" class="activo"></li>
+                <li style="float:right">
                 <?php
-                session_start();
-                include_once "conexion.php";
-                if($_SESSION["rol"]=="Cliente"){
-                    header("Location: registraseVendedor.php");
-                }elseif($_SESSION["rol"]=="Vendedor"){
-                    header("Location: paginaVendedor.html");
+                if($rol == 'CLIENTE'){
+                    echo"<a class='active' href='formularioVendedor.php' >Quiero Vender</a>";
+                }elseif ($rol == 'VENDEDOR') {
+                    echo "<a class='active' href='inventario.php' >Vender </a>";
                 }
-                mysqli_close($conn);
                 ?>
+                </li>
+                
+                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion </a></li>
+                
                 </form>
             </ul>
         </div>
@@ -58,6 +67,33 @@
     </section>
   
         <div class="contenedor" id="contenedor">
+        <?php
+    include_once "conexion.php";
+
+    $sql= mysqli_query($conn,"SELECT * FROM producto");
+    if($sql !== false){
+        if(mysqli_num_rows($sql)> 0){  
+            while ($producto = mysqli_fetch_assoc($sql)){ 
+              echo " <div>
+                <img src='" .$producto['url_imagen']."' width='100%' alt='".$producto['nombre']."' />
+               <div class='informacion'>
+                   <p>".$producto['nombre']."</p>
+                   <p class='precio'>".$producto['precio']."</p>
+                   <button>Comprar</button>
+               </div>
+             </div>";
+            }
+        }
+}
+
+    else {
+        echo "Error al ejecutar la tabla: ".mysqli_error($conn);
+    }
+    mysqli_close($conn);
+
+   
+
+?>
          <div>
              <img src="Imagenes%20cliente/producto1.jpg" alt="producto1" />
             <div class="informacion">

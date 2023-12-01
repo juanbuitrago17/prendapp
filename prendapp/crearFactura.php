@@ -22,7 +22,7 @@
                     $sql= mysqli_query($conn,"SELECT id_venta FROM venta");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option value='" . $fila['id_venta'] . "'>" . $fila['id_venta'] . "</option>";
+                            echo "<option value='" . $fila['id_venta'] . "' style='color:black'>" . $fila['id_venta'] . "</option>";
                         }
                     }
                 ?>

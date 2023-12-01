@@ -1,3 +1,13 @@
+<?php
+session_start();
+$cedula = $_SESSION['cedula'];
+
+if(empty($cedula)){
+    header('Location:login.php');
+}
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">

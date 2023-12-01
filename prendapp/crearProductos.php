@@ -1,3 +1,12 @@
+<?php
+session_start();
+$cedula = $_SESSION['cedula'];
+$rol= $_SESSION['rol'];
+if(empty($cedula) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -13,20 +22,28 @@
             <div class="box">
 
             <form id="form3" method="post" action="crearProductos.php">
+                <?php
+                if($rol=="ADMINISTRADOR"){
+
+                
+                ?>
                     <div class="input-box">
                         <label for="cedula">Seleccione el nombre del vendedor:</label>
                         <select name="cedula" class="input-control" id="cedula">
                             <?php
+
                             include_once "conexion.php";
                             $sql= mysqli_query($conn,"SELECT cedula, nombre FROM usuario");
                             if($sql!== false){
                             while($fila =mysqli_fetch_assoc($sql)){
-                                echo "<option value='" . $fila['cedula'] . "'>" . $fila['nombre'] . "</option>";
+                                echo "<option value='" . $fila['cedula'] . "'style='color:black'>" . $fila['nombre'] . "</option>";
                             }}
                             ?>
                             </select>
                     </div>
-
+                <?php
+                }
+                ?>
                     <div class="input-box">
                         <label for="nombre">Ingrese el nombre del producto:</label>
                         <input type="text" name="nombre"  class="input-control"></input>
@@ -152,10 +169,14 @@
                     <br />
   
                     <br />
-
-                    <h3><a href="indexProducto.php" class="t-text">VOLVER</a></h3>
-
-
+                    <?php
+                if($rol=="ADMINISTRADOR"){
+                    echo "<h3><a href='indexProducto.php' class='t-text'>VOLVER</a></h3>";
+                }else {
+                   echo "<h3><a href='inventario.php' class='t-text'>VOLVER</a></h3>";
+                }
+                ?>
+                    
                 </form>
 
             </div>
@@ -164,7 +185,7 @@
     </section>
     <?php
    if(isset($_POST["crearProducto"])){
-    $cedula = $_POST["cedula"];
+    $cedulaVendedor = $_POST["cedula"] ?? $cedula;
     $nombre = $_POST["nombre"];
     $precio = $_POST["precio"];
     $clima = $_POST["clima"];
@@ -174,11 +195,16 @@
 
     if($valida == True){
     include_once "conexion.php";
-    $sql= "INSERT INTO producto(cedula,nombre,precio,clima,genero,talla,color) VALUES ('$cedula','$nombre','$precio','$clima','$genero','$talla','$color')";
+    $sql= "INSERT INTO producto(cedula,nombre,precio,clima,genero,talla,color) VALUES ('$cedulaVendedor','$nombre','$precio','$clima','$genero','$talla','$color')";
     
     
     function seCreo(){
-        echo "<script>alert('Se registró el producto'); window.location.href = 'indexProducto.php';</script>";
+        $paginaDestino = 'inventario.php' ;
+
+        if($rol=="ADMINISTRADOR"){
+            $paginaDestino =  'indexProducto.php'; 
+        }
+        echo "<script>alert('Se registró el producto'); window.location.href = '$paginaDestino';</script>";
     }
     function noSeCreo() {
         echo "<script>alert('No se pudo registrar el producto');</script>";

@@ -23,7 +23,7 @@
                     $sql= mysqli_query($conn,"SELECT cedula, nombre FROM usuario");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option value='" . $fila['cedula'] . "'>" . $fila['nombre'] . "</option>";
+                            echo "<option value='" . $fila['cedula'] . "'style='color:black'>" . $fila['nombre'] . "</option>";
                         }
                     }
                 ?>
@@ -38,7 +38,7 @@
                     $sql= mysqli_query($conn,"SELECT id_inventario FROM inventario");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option  value='" . $fila['id_inventario'] . "'>" . $fila['id_inventario'] . "</option>";
+                            echo "<option  value='" . $fila['id_inventario'] . "'style='color:black'>" . $fila['id_inventario'] . "</option>";
                         }
                     }
                 ?>
