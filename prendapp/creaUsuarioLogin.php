@@ -230,7 +230,8 @@ if(isset($_POST["crearUsuarios"])){
 
 
     function seCreo(){
-        echo "<script>alert('Se registró el usuario'); window.location.href = 'login.php';</script>";
+        $paginaDestino = "login.php";
+        echo "<script>alert('Se registró el usuario'); window.location.href ='$paginaDestino';</script>";
     }
     function noSeCreo() {
         echo "<script>alert('No se pudo registrar el usuario');</script>";

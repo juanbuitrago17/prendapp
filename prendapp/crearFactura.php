@@ -66,19 +66,6 @@
             }
             ?>
           </div>
-          <div class="input-box" >
-          <label for="detalles">Detalles de la compra:</label>
-          <input type="text" name="detalles" class="input-control" ></input>
-          <?php 
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $detalles = $_POST["detalles"];
-                if(empty($detalles)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }
-            }
-            ?>
-          </div>
 
          <center><input type="submit" value="CREAR" name="crearFactura" class="button button2"></td> </center><br />
        
@@ -98,11 +85,10 @@ if(isset($_POST["crearFactura"])){
     $fechaCreacion = date("Y-m-d");
     $total = $_POST["total"];
     $cantidadProductos = $_POST["cantidadProductos"];
-    $detalles = $_POST["detalles"];
 
     if($valida == True){
         include_once "conexion.php";
-    $sql= "INSERT INTO factura(id_venta,fechaCreacion,totalCompra,cantidadProductos,detalles) VALUES ('$id_venta','$fechaCreacion','$total','$cantidadProductos','$detalles')";
+    $sql= "INSERT INTO factura(id_venta,fechaCreacion,totalCompra,cantidadProductos) VALUES ('$id_venta','$fechaCreacion','$total','$cantidadProductos')";
 
     function seCreo(){
         echo "<script>alert('Se registró la factura'); window.location.href = 'indexFactura.php';</script>";

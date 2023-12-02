@@ -84,26 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_venta'])) {
         }
             ?>
         </div>
-        <div class="input-box">
-            <label for="estado">Estado de la venta:</label>
-            <input type="text" name="estado" value="<?php echo isset($venta['estado']) ? $venta['estado'] : ''; ?>" class="input-control"></input>
-            <?php
-             if (isset($_POST["actualizarVenta"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $estado = $_POST["estado"];
-                if(empty($estado)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^(Pendiente|pendiente|Pagada|pagada)$/", $estado)){
-                        echo "<p class='p'>El campo no tiene el formato correcto</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
-        </div>
+
 
          <center><input type="submit" value="Actualizar" name="actualizarVenta" class="button button2"></td> </center><br />
        
@@ -122,11 +103,10 @@ if(isset($_POST["actualizarVenta"])){
     $id_venta = $_POST["id_venta"];
     $cantidadProductos = $_POST["cantidadProductos"];
     $total = $_POST["total"];
-    $estado = $_POST["estado"];
 
     if($valida == True){
      include_once "conexion.php";
-    $sql= "UPDATE venta SET cantidadProductos='$cantidadProductos',  total='$total',estado='$estado' WHERE id_venta='$id_venta'";
+    $sql= "UPDATE venta SET cantidadProductos='$cantidadProductos',  total='$total' WHERE id_venta='$id_venta'";
 
     function seCreo(){
         echo "<script>alert('Se actualizo la venta'); window.location.href = 'indexVenta.php';</script>";

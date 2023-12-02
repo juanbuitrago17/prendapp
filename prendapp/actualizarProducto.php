@@ -1,7 +1,7 @@
 <?php
 session_start();
 $cedula = $_SESSION['cedula'];
-$rol= $_SESSION['rol'];
+$rol = $_SESSION["rol"];
 if(empty($cedula) || empty($rol)){
     header('Location:login.php');
 }
@@ -179,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_producto'])) {
                     </div>
                     <div class="input-box">
                         <label for="url_imagen">Ingrese la url de la imagen del producto:</label>
-                        <input type="text" name="url_imagen"  class="input-control"></input>
+                        <input type="text" name="url_imagen" value="<?php echo isset($producto['url_imagen']) ? $producto['url_imagen'] : ''; ?>" class="input-control"></input>
                         <?php
                         if(isset($_POST["actualizarProducto"])){
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -238,7 +238,8 @@ if(isset($_POST["actualizarProducto"])){
     $precio = $_POST["precio"];
     $clima = $_POST["clima"];
     $url_imagen = $_POST["url_imagen"];
-    
+
+ 
 
     if($valida == True){
         include_once "conexion.php";
@@ -250,7 +251,7 @@ if(isset($_POST["actualizarProducto"])){
 
         if($rol=="ADMINISTRADOR"){
             $paginaDestino =  'indexProducto.php'; 
-        }  
+        } 
         echo "<script>alert('Se actualizo el producto'); window.location.href = '$paginaDestino';</script>";
     } 
     function noSeCreo() { 

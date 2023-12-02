@@ -1,3 +1,13 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -123,5 +133,4 @@
 </script>
 </body>
 </html>
-</body>
-</html>
+

@@ -1,3 +1,12 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
 
 <!DOCTYPE html>
 
@@ -14,7 +23,7 @@
 <body>
     <div class="d-flex" id="content-wrapper">
         <div id="sidebar-container" class="bg-primary">
-            <div class="logo"><img src="Imagenes%20cliente/Prendapp-1.png" alt="Logo Empresa" style="height: 58px; width: 85px" />
+            <div class="logo"><img src="Imagenes/Prendapp-1.png" alt="Logo Empresa" style="height: 58px; width: 85px" />
                 <h4 class="text-light font-weight-bold mb-0">DATOS</h4>
             </div>
             <div class="menu">
@@ -47,7 +56,7 @@
 
                                 <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
+                                    <img src="Imagenes/user.png" class="img-fluid rounded-circle avatar mr-2"
                                         alt="https://generated.photos/" />
                                     <styl style="color: aliceblue;">
                                     Menu

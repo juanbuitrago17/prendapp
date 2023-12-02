@@ -8,7 +8,7 @@ if (isset($_POST['cedula'])) {
     if (mysqli_query($conn, $sql)) {
         
         
-echo "<script>alert('Usuario eliminado correctamente'); window.location.href = 'index.php';</script>";
+echo "<script>alert('Usuario eliminado correctamente'); window.location.href = 'indexUsuario.php';</script>";
     } else {
         echo "Error al intentar eliminar el usuario: " . mysqli_error($conn);
     }

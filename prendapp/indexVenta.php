@@ -1,3 +1,13 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +23,7 @@
 <body>
     <div class="d-flex" id="content-wrapper">
     <div id="sidebar-container" class="bg-primary">
-        <div class="logo"><img src="Imagenes%20cliente/Prendapp-1.png" alt="Logo Empresa" style="height: 58px; width: 86px" />
+        <div class="logo"><img src="Imagenes/Prendapp-1.png" alt="Logo Empresa" style="height: 58px; width: 86px" />
             <h4 class="text-light font-weight-bold mb-0">DATOS</h4>
         </div>
         <div class="menu">
@@ -45,7 +55,7 @@
 
                             <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="Imagenes%20cliente/user.png" class="img-fluid rounded-circle avatar mr-2"
+                                <img src="Imagenes/user.png" class="img-fluid rounded-circle avatar mr-2"
                                     alt="https://generated.photos/" />
                                 <styl style="color: aliceblue;">
                                 Menu
@@ -74,7 +84,7 @@
     if($sql !== false){
         if(mysqli_num_rows($sql)> 0){
             echo "<br><input type='button' value='Crear' name='agregar' onclick='paginaRegistro()' class='button '>";
-            echo "<table><tr><th>Id_venta</th><th>Cedula</th><th>Id_inventario</th><th>FechaCreacion</th><th>CantidadProductos</th><th>Total</th><th>Estado</th><th>Actualizar</th><th>Eliminar</th></tr>";
+            echo "<table><tr><th>Id_venta</th><th>Cedula</th><th>Id_inventario</th><th>FechaCreacion</th><th>CantidadProductos</th><th>Total</th><th>Actualizar</th><th>Eliminar</th></tr>";
             while ($mostrar = mysqli_fetch_assoc($sql)){ 
             echo "<tr><td>".$mostrar['id_venta']. "</td>
             <td>".$mostrar['cedula']. "</td>
@@ -82,7 +92,6 @@
             <td>".$mostrar['fechaCreacion']. "</td>
             <td>".$mostrar['cantidadProductos']. "</td>
             <td>".$mostrar['total']. "</td>
-            <td>".$mostrar['estado']. "</td>
             <td><form method='post' action='actualizarVenta.php'>
             <input type='hidden' name='id_venta' value='".$mostrar['id_venta']."'>
             <button type='submit' class='a button3' onclick='return confirm(\"¿Estás seguro de que quieres actualizar esta venta?\")'>Actualizar</button>

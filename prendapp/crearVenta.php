@@ -16,14 +16,14 @@
 
     <div class="input-box">
              <label for="cedula">Seleccione el nombre del comprador:</label>
-                <select name="cedula" class="input-control" id="cedula">
+                <select name="cedula"  class="input-control" id="cedula">
                 <?php
                     $valida = true;
                     include_once "conexion.php";
                     $sql= mysqli_query($conn,"SELECT cedula, nombre FROM usuario");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option value='" . $fila['cedula'] . "'style='color:black'>" . $fila['nombre'] . "</option>";
+                            echo "<option  style='color:black' value='" . $fila['cedula'] . "'>" . $fila['nombre'] . "</option>";
                         }
                     }
                 ?>
@@ -38,7 +38,7 @@
                     $sql= mysqli_query($conn,"SELECT id_inventario FROM inventario");
                     if($sql!== false){
                         while($fila =mysqli_fetch_assoc($sql)){
-                            echo "<option  value='" . $fila['id_inventario'] . "'style='color:black'>" . $fila['id_inventario'] . "</option>";
+                            echo "<option style='color:black' value='" . $fila['id_inventario'] . "'>" . $fila['id_inventario'] . "</option>";
                         }
                     }
                 ?>

@@ -83,21 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_factura'])) {
         }
             ?>
           </div>
-          <div class="input-box" >
-          <label for="detalles">Detalles de la compra:</label>
-          <input type="text" name="detalles" value="<?php echo isset($factura['detalles']) ? $factura['detalles'] : ''; ?>" class="input-control" ></input>
-          <?php 
-          if (isset($_POST["actualizarFactura"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $detalles = $_POST["detalles"];
-                if(empty($detalles)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }
-            }
-        }
-            ?>
-          </div>
 
          <center><input type="submit" value="Actualizar" name="actualizarFactura" class="button button2"></td> </center><br />
        
@@ -116,11 +101,10 @@ if(isset($_POST["actualizarFactura"])){
     $id_factura = $_POST["id_factura"];
     $total = $_POST["total"];
     $cantidadProductos = $_POST["cantidadProductos"];
-    $detalles = $_POST["detalles"];
 
     if($valida == True){
      include_once "conexion.php";
-    $sql= "UPDATE factura SET totalCompra='$total',  cantidadProductos='$cantidadProductos', detalles ='$detalles ' WHERE id_factura='$id_factura'";
+    $sql= "UPDATE factura SET totalCompra='$total',  cantidadProductos='$cantidadProductos'  WHERE id_factura='$id_factura'";
 
     function seCreo(){
         echo "<script>alert('Se actualizo la factura'); window.location.href = 'indexFactura.php';</script>";

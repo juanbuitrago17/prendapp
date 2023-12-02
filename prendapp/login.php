@@ -15,7 +15,7 @@
 			<div class="box">
     <h3>Bienvenidos</h3>
 
-  <center><img src="Imagenes%20cliente/Prendapp-1.png" alt="Imagen de inicio de sesión" /></center>
+  <center><img src="Imagenes/Prendapp-1.png" alt="Imagen de inicio de sesión" /></center>
  <form name="form11" method="post" action="login.php" >
 
     <div class="input-box" >

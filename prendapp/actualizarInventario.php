@@ -78,12 +78,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_inventario'])) {
         <br /><br />
 
         <?php
-                if($rol=="ADMINISTRADOR"){
-                    echo "<h3>  <a href='indexInventario.php' class='t-text'>VOLVER</a></h3>";
-                }else {
-                   echo "<h3>  <a href='indexInventario.php' class='t-text'>VOLVER</a></h3>";
-                }
-                ?>
+            if($rol=="ADMINISTRADOR"){
+                echo "<h3>  <a href='indexInventario.php' class='t-text'>VOLVER</a></h3>";
+            }else {
+                echo "<h3>  <a href='inventario.php' class='t-text'>VOLVER</a></h3>";
+            }
+        ?>
         
      
     </form>
@@ -93,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_inventario'])) {
 		
 	</section>
     <?php
+    
 if (isset($_POST["actualizarInventario"])) {
 
     $id_inventario = $_POST["id_inventario"];
@@ -105,8 +106,8 @@ if (isset($_POST["actualizarInventario"])) {
     $sql = "UPDATE inventario SET cantidad='$cantidad', fechaActualizacion='$fechaActualizacion' WHERE id_inventario='$id_inventario'";
 
     function seCreo(){
-    $paginaDestino = 'inventario.php' ;
-
+    
+        $paginaDestino = 'inventario.php' ;
         if($rol=="ADMINISTRADOR"){
             $paginaDestino =  'indexInventario.php'; 
         }

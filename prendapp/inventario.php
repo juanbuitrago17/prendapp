@@ -23,7 +23,7 @@ if(empty($usuario) || empty($rol)){
     <header>
         <div class="ancho">
         <div class="logo">
-            <img src="Imagenes%20cliente/Prendapp-1.png" alt="Logo Empresa"/>
+            <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa"/>
             <h1>PRENDAPP</h1>
             <h2>COMPRA AQUI</h2>
         </div>

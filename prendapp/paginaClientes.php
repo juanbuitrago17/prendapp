@@ -15,14 +15,15 @@ if(empty($usuario) || empty($rol)){
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PRENDAPP</title>
-    <link href="stylesPagina.css" rel="stylesheet" />
+    
     <link href="stylesImagenes.css" rel="stylesheet" />
+   <link href="stylesPagina.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <div class="ancho">
         <div class="logo">
-            <img src="Imagenes%20cliente/Prendapp-1.png" alt="Logo Empresa"/>
+            <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa"/>
             <h1>PRENDAPP</h1>
             <h2>COMPRA AQUI</h2>
         </div>
@@ -74,11 +75,11 @@ if(empty($usuario) || empty($rol)){
         if(mysqli_num_rows($sql)> 0){  
             while ($producto = mysqli_fetch_assoc($sql)){ 
               echo " <div>
-                <img src='" .$producto['url_imagen']."' width='100%' alt='".$producto['nombre']."' />
+              <a href='detalles.php?id_producto=".$producto['id_producto']."' ><img src='" .$producto['url_imagen']."' width='100%' alt='".$producto['nombre']."' /></a> 
                <div class='informacion'>
                    <p>".$producto['nombre']."</p>
-                   <p class='precio'>".$producto['precio']."</p>
-                   <button>Comprar</button>
+                   <p class='precio'>COP ".$producto['precio']."</p>
+                   Detalle
                </div>
              </div>";
             }
@@ -90,43 +91,9 @@ if(empty($usuario) || empty($rol)){
     }
     mysqli_close($conn);
 
-   
+    
 
 ?>
-         <div>
-             <img src="Imagenes%20cliente/producto1.jpg" alt="producto1" />
-            <div class="informacion">
-                <p>producto 1</p>
-                <p class="precio">$80<span>.000</span> </p>
-                <button>Comprar</button>
             </div>
-        </div>
-        <div>
-            <img src="Imagenes%20cliente/producto2.jpg" alt="producto2"/>
-                <div class="informacion">
-                    <p>producto 2</p>
-                    <p class="precio">$85<span>.000</span> </p>
-                    <button>Comprar</button>
-                </div>
-            </div>
-            <div>
-                <img src="Imagenes%20cliente/producto4.jpg" alt="producto4" />
-                    <div class="informacion">
-                        <p>producto 3</p>
-                        <p class="precio">$90<span>.000</span> </p>
-                        <button>Comprar</button>
-                    </div>
-                </div>
-                <div>
-                    <img src="Imagenes%20cliente/producto5.jpg" alt="producto5"/>
-                        <div class="informacion">
-                            <p>producto 4</p>
-                            <p class="precio">$70<span>.000</span> </p>
-                            <button>Comprar</button>
-                        </div>
-                </div>
-
-            </div>
-        <script src="Javascr/java.js"></script>
 </body>
 </html>
