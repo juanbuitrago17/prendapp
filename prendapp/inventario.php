@@ -15,37 +15,37 @@ if(empty($usuario) || empty($rol)){
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PRENDAPP</title>
-    <link href="stylesPagina.css" rel="stylesheet" />
+    <link href="stylesPaginas.css" rel="stylesheet"/>
     <link href="stylesImagenes.css" rel="stylesheet" />
     <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleHeader.css" rel="stylesheet" />
+    <link href="estylePie.css" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
         <div class="ancho">
         <div class="logo">
-            <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa"/>
+            <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa">
             <h1>PRENDAPP</h1>
-            <h2>COMPRA AQUI</h2>
+            <h2>COMPRA</h2>
         </div>
             <ul>
-                <li><a href="#nostros">Nosotros</a></li>
+            <li><a href="nosotros.php">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 
                 <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion</a></li>
                 <li style="float:right"><a class="active" href="crearProductos.php" >Crear Producto</a></li>
                 <li style="float:right"><a class="active" href="paginaClientes.php" >Regresar</a></li>
-                
-                </form>
             </ul>
         </div>
     </header>
     <nav> 
         <br><br />
      <br />
-    <h1>Administrar Inventario</h1>
+    <h1 class="letras">Administrar Inventario</h1>
     <br/><br/>
 
-    <h3>Seleccionar producto</h3>
+    <h3 class="letras">Seleccionar producto</h3>
     <div>
     <form id="administrarInventario" method="post" action="inventario.php">
     
@@ -62,7 +62,7 @@ if(empty($usuario) || empty($rol)){
 
         $productosActuales->bind_result($id_producto, $nombre);
 
-       echo "<label for='id_producto'>Seleccione el nombre del producto:</label>";
+       echo "<label for='id_producto' class='letras'>Seleccione el nombre del producto:</label>";
        echo "<select name='id_producto'  id='id_producto'>";
         while($productosActuales->fetch()){
             echo "<option value='" . $id_producto . "'style='color:black'>" . $nombre . "</option>";
@@ -73,7 +73,7 @@ if(empty($usuario) || empty($rol)){
     ?>
     </div>
     <div>
-    <label for="cantidad">Ingrese la cantidad de productos:</label>
+    <label for="cantidad" class="letras">Ingrese la cantidad de productos:</label>
     <input type="text" name="cantidad" class="input-control">
     <?php
         $valida = true;
@@ -124,7 +124,7 @@ if(empty($usuario) || empty($rol)){
     </div>
     <br/><br/>
 
-    <h3>Inventario</h3>
+    <h3 class="letras">Inventario</h3>
     <br/><br/>
     
     <div>
@@ -161,8 +161,29 @@ if(empty($usuario) || empty($rol)){
     </div>
     </nav> 
     
-
-
-
 </body>
+<footer>
+    <h2 id="contacto" >PRENDAPP</h2>
+    <br>    
+    <p class="pt">
+        <img  class="img-t" src="Imagenes/Prendapp-1.png" alt="Descripción de la imagen">
+        &nbsp;
+        Bogota-Colombia
+        310546986-3124596564&
+        PRENDAPP@gmail.com
+        </p>
+        <br><br>
+        <h5>Siguenos en Redes sociales</h5>
+           
+           
+        <a href="https://www.facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=1234567890" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <p class="py">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright ©2023 My Website. Todos los derechos reservados a PRENDAPP.</p>
+</footer>
 </html>

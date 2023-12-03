@@ -1,0 +1,108 @@
+:root{
+    --green:                hsl(162, 45%, 56%);
+    --lead:                 hsl(162,  2%, 56%);
+    --blue:                 hsl(220, 85%, 57%);
+    --violet:               hsl(272, 92%, 32%);
+    --tex-white:            hsl(0, 0%, 100%);
+    --text-ligth-gray:      hsl(0, 0%, 90%);
+    --body-bg-color:        hsl(200, 54%, 12%);
+    --glass-bg-color:       hsla(0, 0%, 100%, 0.05);
+    --border-color:         hsla(0, 0%, 100%, 0.25);
+    --blur: blur(10px);
+    --button-hover-color:   hsla(0, 0%, 0%, 0.3);
+}
+
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color:transparent;
+    color:black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:relative;
+    top: 56;
+}
+.ancho{
+    width: 100%;
+    height: 100px;
+    background: transparent;
+}
+
+
+.logo {
+    width: 40%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 120px;
+    height: 80px;
+    margin-right: 0px;
+    
+}
+
+.logo h1 {
+    white-space:nowrap;
+    margin: 0;
+    text-align: justify;
+    font-size: 20px;
+    
+}
+.logo h2{
+    white-space:nowrap;
+    margin-left: 900px;
+}
+
+
+ul {
+    width: 102%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: purple; 
+    border-right: 1px solid rgb(0, 255, 221);
+    margin-left: -10px;
+   
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: whitesmoke;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+li a:hover:not(.active) {
+    background-color: pink;
+}
+
+.active {
+    background-color: violet;
+
+}
+
+
+li a:hover:not(.activo) {
+    background-color: pink;
+}
+
+.activo {
+    background-color: violet;
+   
+}
+
+
+
+
+

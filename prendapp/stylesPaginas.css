@@ -1,8 +1,6 @@
 :root {
     --green: hsl(162, 45%, 56%);
     --lead: hsl(162, 2%, 56%);
-    --blue: hsl(220, 85%, 57%);
-    --violet: hsl(272, 92%, 32%);
     --tex-white: hsl(0, 0%, 100%);
     --text-ligth-gray: hsl(0, 0%, 90%);
     --body-bg-color: hsl(200, 54%, 12%);
@@ -13,7 +11,7 @@
 }
 
 body {
-    background-color: var(--body-bg-color);
+    background-color: #eeeeee;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -40,17 +38,6 @@ body {
     border: 3px solid greenyellow;
 }
 
-body::after,
-body::before {
-    content: '';
-    position: fixed;
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    z-index: -1;
-    filter: blur(150px);
-    opacity: 0.5;
-}
 
 body::before {
     background-color: var(--blue);
@@ -161,30 +148,6 @@ nav h1 {
     justify-content: center;
 }
 
-/*.containaner-img {
-    width: 300px;
-    height: auto;
-    margin: 50px auto 0;
-    overflow: hidden;
-}
-
-    .containaner-img ul {
-        display: flex;
-        padding: 0;
-        width: 400%;
-        animation: slide 20s infinite alternate ease-in-out;
-    }
-
-    .containaner-img li {
-        width: 100%;
-        list-style: none;
-        position: relative;
-    }
-
-    .containaner-img img {
-        width: 100%;
-    }
-*/
 @keyframes slide {
     0% {
         margin-left: 0;
@@ -325,3 +288,6 @@ nav h1 {
         .informacion button:hover {
             background-color: #2D4263;
         }
+.letras{
+    color:#11294d;
+}

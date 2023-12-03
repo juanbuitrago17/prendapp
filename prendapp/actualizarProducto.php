@@ -217,8 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_producto'])) {
                     }else {
                     echo "<h3><a href='inventario.php' class='t-text'>VOLVER</a></h3>";
                     }
+                    echo $rol;
                     ?>
-
 
                 </form>
 
@@ -247,12 +247,11 @@ if(isset($_POST["actualizarProducto"])){
     $sql = "UPDATE producto SET nombre='$nombre', color='$color', genero='$genero', talla='$talla', precio='$precio', clima='$clima', url_imagen='$url_imagen' WHERE id_producto='$id_producto'";
     
     function seCreo(){ 
-        $paginaDestino = 'inventario.php' ;
-
         if($rol=="ADMINISTRADOR"){
-            $paginaDestino =  'indexProducto.php'; 
-        } 
-        echo "<script>alert('Se actualizo el producto'); window.location.href = '$paginaDestino';</script>";
+            echo "<script>alert('Se actualizo el producto); window.location.href = 'indexProducto.php';</script>";
+            }else {
+                echo "<script>alert('Se actualizo el producto); window.location.href = 'inventario.php';</script>";
+            }
     } 
     function noSeCreo() { 
         echo "<script>alert('No se pudo actualizar el producto');</script>"; 
