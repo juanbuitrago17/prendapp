@@ -16,15 +16,16 @@ if(empty($usuario) || empty($rol)){
     <title>PRENDAPP</title>
     <link href="stylesPaginas.css" rel="stylesheet" />
     <link href="stylesImagenes.css" rel="stylesheet" />
-    <link href="styleHeader.css" rel="stylesheet" />
+    <link href="styleHeaders.css" rel="stylesheet"  >
     <link href="estylePie.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body><header>
         <div class="ancho">
         <div class="logo">
             <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa">
             <h1>PRENDAPP</h1>
-            <h2>COMPRA</h2>
+            <h2 style="margin-left: 1400px;">COMPRA AQUI</h2>
         </div>
             <ul>
             
@@ -115,7 +116,7 @@ if($producto['cantidad']>= 1){
 </nav> 
 
 </body>
-<footer>
+<footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    
     <p class="pt">

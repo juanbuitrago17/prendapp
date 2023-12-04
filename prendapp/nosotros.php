@@ -30,7 +30,7 @@ if(empty($usuario) || empty($rol)){
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-   <link rel="stylesheet" href="css/Unti.css">
+   <link rel="stylesheet" href="css/styleNosotros.css"/>
    <link rel="stylesheet" href="estilis.css">
    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style.css">
@@ -54,8 +54,8 @@ if(empty($usuario) || empty($rol)){
         <div class="ancho">
         <div class="logo">
             <img src="img/Prendapp-1.png" alt="Logo Empresa">
-            <h1 class="hh" style="color: #11294d;">PRENDAPP</h1>
-            <h2 class="hh" style="margin-left: 1400px; word-spacing: normal;" style="color: #11294d;">COMPRA AQUI</h2>
+            <h1 class="hh" style="line-height: 1.5;">PRENDAPP</h1>
+            <h2 class="hh" style="margin-left: 1400px; word-spacing: normal;  line-height: 1.5;">COMPRA AQUI</h2>
         </div>
             <ul>
                 <li><a href="#contacto">Contacto</a></li>

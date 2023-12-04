@@ -24,6 +24,8 @@ header {
     align-items: center;
     position:relative;
     top: 56;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
 }
 .ancho{
     width: 100%;
@@ -85,6 +87,7 @@ li a {
 
 li a:hover:not(.active) {
     background-color: pink;
+    text-decoration:none;
 }
 
 .active {
@@ -95,6 +98,7 @@ li a:hover:not(.active) {
 
 li a:hover:not(.activo) {
     background-color: pink;
+    text-decoration:none;
 }
 
 .activo {

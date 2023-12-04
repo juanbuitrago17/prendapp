@@ -14,7 +14,7 @@ if(empty($cedula) || empty($rol)){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Actualizar Producto</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleTablas.css" rel="stylesheet">
 </head>
 <body>
 <?php
@@ -217,7 +217,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_producto'])) {
                     }else {
                     echo "<h3><a href='inventario.php' class='t-text'>VOLVER</a></h3>";
                     }
-                    echo $rol;
                     ?>
 
                 </form>
@@ -238,26 +237,27 @@ if(isset($_POST["actualizarProducto"])){
     $precio = $_POST["precio"];
     $clima = $_POST["clima"];
     $url_imagen = $_POST["url_imagen"];
-
- 
-
+    $rol = $_SESSION["rol"];
+    
+    echo $rol;
     if($valida == True){
         include_once "conexion.php";
     
     $sql = "UPDATE producto SET nombre='$nombre', color='$color', genero='$genero', talla='$talla', precio='$precio', clima='$clima', url_imagen='$url_imagen' WHERE id_producto='$id_producto'";
-    
-    function seCreo(){ 
+    function seCreo($rol){ 
+        echo "hola";
         if($rol=="ADMINISTRADOR"){
-            echo "<script>alert('Se actualizo el producto); window.location.href = 'indexProducto.php';</script>";
+            echo "<script>alert('Se actualizo el producto'); window.location.href = 'indexProducto.php';</script>";
             }else {
-                echo "<script>alert('Se actualizo el producto); window.location.href = 'inventario.php';</script>";
+                echo "<script>alert('Se actualizo el producto'); window.location.href = 'inventario.php';</script>";
             }
     } 
+    
     function noSeCreo() { 
         echo "<script>alert('No se pudo actualizar el producto');</script>"; 
     } 
     if (mysqli_query($conn, $sql)) {
-        echo seCreo(); 
+        echo seCreo($rol); 
     } else { 
         echo noSeCreo(); 
     }

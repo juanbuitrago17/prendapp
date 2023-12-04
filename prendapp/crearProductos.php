@@ -14,7 +14,7 @@ if(empty($cedula) || empty($rol)){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Crear Producto</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleTablas.css" rel="stylesheet">
 </head>
 <body>
     <section class="form-d">
@@ -213,7 +213,7 @@ if(empty($cedula) || empty($rol)){
     $sql= "INSERT INTO producto(cedula,nombre,precio,clima,genero,talla,color,url_imagen) VALUES ('$cedulaVendedor','$nombre','$precio','$clima','$genero','$talla','$color','$url_imagen')";
     
     
-    function seCreo(){
+    function seCreo($rol){
         $paginaDestino = 'inventario.php' ;
 
         if($rol=="ADMINISTRADOR"){
@@ -225,7 +225,7 @@ if(empty($cedula) || empty($rol)){
         echo "<script>alert('No se pudo registrar el producto');</script>";
     }
     if (mysqli_query($conn, $sql)) {
-        echo seCreo();
+        echo seCreo($rol);
     } else {
         echo noSeCreo();
     }

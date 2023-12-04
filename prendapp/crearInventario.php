@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Crear Inventario</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleTablas.css" rel="stylesheet">
 </head>
 <body>
     

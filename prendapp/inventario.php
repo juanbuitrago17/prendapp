@@ -18,8 +18,9 @@ if(empty($usuario) || empty($rol)){
     <link href="stylesPaginas.css" rel="stylesheet"/>
     <link href="stylesImagenes.css" rel="stylesheet" />
     <link href="stylesTablas.css" rel="stylesheet">
-    <link href="styleHeader.css" rel="stylesheet" />
+    <link href="styleHeaders.css" rel="stylesheet"  >
     <link href="estylePie.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body>
 <header>
@@ -27,7 +28,7 @@ if(empty($usuario) || empty($rol)){
         <div class="logo">
             <img src="Imagenes/Prendapp-1.png" alt="Logo Empresa">
             <h1>PRENDAPP</h1>
-            <h2>COMPRA</h2>
+            <h2 style="margin-left: 1400px;">COMPRA AQUI</h2>
         </div>
             <ul>
             <li><a href="nosotros.php">Nosotros</a></li>
@@ -70,6 +71,7 @@ if(empty($usuario) || empty($rol)){
         echo "</select><br><br>";
         $productosActuales->close();
     }
+    
     ?>
     </div>
     <div>
@@ -104,6 +106,15 @@ if(empty($usuario) || empty($rol)){
     
         if($valida == True){
         include_once "conexion.php";
+        $buscar= mysqli_query($conn,"SELECT * FROM inventario WHERE id_producto = '$id_producto'");
+        
+        if(mysqli_num_rows($buscar)> 0){
+            $filaProducto = mysqli_fetch_assoc($buscar);
+            $nuevaCantidad = $cantidad  + $filaProducto['cantidad'];
+            $nuevaCantidadProducto="UPDATE inventario SET cantidad = '$nuevaCantidad' WHERE id_producto = '$id_producto'";
+            
+        }else{
+
         $sql= "INSERT INTO inventario(id_producto,cantidad,fechaCreacion) VALUES ('$id_producto','$cantidad','$FechaCreacion')";
 
         function seCreo(){
@@ -119,6 +130,7 @@ if(empty($usuario) || empty($rol)){
         }
         
         }
+    }
     }
     ?>
     </div>
@@ -162,7 +174,7 @@ if(empty($usuario) || empty($rol)){
     </nav> 
     
 </body>
-<footer>
+<footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    
     <p class="pt">

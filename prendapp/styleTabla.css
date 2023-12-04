@@ -1,0 +1,130 @@
+body{
+    overflow:hidden;
+}
+table{
+    width: 70px;
+    font-family: sans-serif;
+    font-weight: 150;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px  #eeeeee;
+}
+th,
+td{
+    background-color:aliceblue;
+    padding: 5px;
+    color:black;
+    
+}
+th{
+    text-align: left;
+    word-spacing: 10px;
+}
+thead th{
+    
+    background-color: aliceblue;
+}
+:root{
+	--green:                hsl(162, 45%, 56%);
+    --lead:                 hsl(162,  2%, 56%);
+    --blue:                 hsl(220, 85%, 57%);
+    --violet:               hsl(272, 92%, 32%);
+    --tex-white:            hsl(0, 0%, 100%);
+    --text-ligth-gray:      hsl(0, 0%, 90%);
+    --body-bg-color:        hsl(200, 54%, 12%);
+    --glass-bg-color:       hsla(0, 0%, 100%, 0.05);
+    --border-color:         hsla(0, 0%, 100%, 0.25);
+    --blur: blur(10px);
+    --button-hover-color:   hsla(0, 0%, 0%, 0.3);
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+footer {
+	background-color: var(--body-bg-color);
+	color: var(--text-ligth-gray);
+	font-family:'Times New Roman', Times, serif;
+	font-weight: 1400;
+	font-size: 16px;
+	line-height: 1.9;
+    padding: 26px;
+    text-align: left;
+    position:absolute;
+    
+    width: 170%; 
+    max-width: 1400px; 
+   
+}
+.h2{
+    font-family: italic;
+    font-size: 22px; 
+    font-weight: bold; 
+    color: whitesmoke; 
+}
+
+.img-t{
+    height: 100px;
+    width: 200px;
+    float: right;
+    margin: 0px 0px 85px 100px;
+}
+
+
+.social-icon {
+    color: greenyellow;
+    margin: 0 6px;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+.newsletter-form {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.newsletter-form input[type="email"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    left: 500px;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background-color: #0056b3;
+}
+h5{
+    font-size: 18px;
+    line-height: 1.8em;
+    text-align: left;
+    letter-spacing: .09em;
+    font-weight: bold;
+}
+.pt{
+    line-height: 1.8em;
+    word-spacing: 68px;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 800%;
+    text-align: center;
+    color: white;
+}
+.py{
+    font-size: 8px;
+    color: aliceblue;
+    text-align: center;
+}

@@ -2,12 +2,20 @@
 session_start();
 $cedula = $_SESSION['cedula'];
 $rol = $_SESSION["rol"];
+$nombreUsuario = $_SESSION["nombre"];
 
 if(empty($cedula) || empty($rol)){
     header('Location:login.php');
 }
 ?>
+<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Factura</title>
+<link href="styleFactura.css" rel="stylesheet"/>
+<body>
 <?php
 
 if(isset($_POST["venta"] )){
@@ -41,17 +49,43 @@ $precioProducto = $_POST['precio'];
     $id_factura = mysqli_insert_id($conn);
     
     }
-
-    echo "Numero de factura: " . $id_factura."<br/>";
-    echo "Fecha de compra: ". $fechaCreacion."<br/>";
-    echo "Nombre del producto: ".$nombreProducto."<br/>"; 
-    echo "Cantidad de productos comprados: ".$cantidadProductos."<br/>";
-    echo "Presio unitario: ". $precioProducto."<br/>";
-    echo "Total de la compra: ".  $total."<br/>";
     ?>
-
-   <center> <a class='active' href='paginaClientes.php' >Volver</a></center>
-   </center><input type="button" name="General" value="Imprimir P&aacute;gina" onclick="window.print();"></center>
+    <div class="factura">
+  <div class="logo">
+    <img src="Imagenes/Prendapp-1.png" alt="Logo empresa">
+  </div>
+  <div class="consecutivo">Factura - <?php echo $id_factura; ?></div>
+  <div class="detalles">
+    <div><strong>Fecha Comprador:</strong> <?php echo $fechaCreacion; ?></div>
+    <div><strong>Nombre Comprador:</strong> <?php echo $nombreUsuario ?></div>
+  </div>
+  <div class="productos">
+    <div class="producto cabecera">    
+      <div>Id</div>
+      <div>Nombre</div>
+      <div>Cantidad</div>
+      <div>Precio Unitario</div>
+    </div>
+    <div class="producto">    
+      <div><?php echo $id_producto; ?></div>
+      <div><?php echo $nombreProducto; ?></div>
+      <div><?php echo $cantidadProductos; ?></div>
+      <div><?php echo $precioProducto; ?></div>
+    </div>
+  </div>
+  <div class="producto totales">
+    <div></div>
+    <div></div>
+    <div>Total</div>
+    <div><?php echo $total; ?></div>
+  </div>
+  
+  <div class="acciones">
+    <button id="imprimir" onclick="window.print();">Imprimir</button><br/>
+  </div>
+</div>
+    <div>
+   <center> <a class='active' href='paginaClientes.php' style="text-decoration:none;">Volver</a></center>
     <?php
     }
 }
@@ -60,3 +94,5 @@ $precioProducto = $_POST['precio'];
     
 }
 ?> 
+</body>
+</html>

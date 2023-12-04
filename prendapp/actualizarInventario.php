@@ -14,7 +14,7 @@ if(empty($cedula) || empty($rol)){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Actualizar Inventario</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleTablas.css" rel="stylesheet">
 </head>
 <body>
 <?php
@@ -105,7 +105,7 @@ if (isset($_POST["actualizarInventario"])) {
 
     $sql = "UPDATE inventario SET cantidad='$cantidad', fechaActualizacion='$fechaActualizacion' WHERE id_inventario='$id_inventario'";
 
-    function seCreo(){
+    function seCreo($rol){
     
         $paginaDestino = 'inventario.php' ;
         if($rol=="ADMINISTRADOR"){
@@ -120,7 +120,7 @@ if (isset($_POST["actualizarInventario"])) {
     }
 
     if (mysqli_query($conn, $sql)) {
-        echo seCreo();
+        echo seCreo($rol);
     } else {
         echo noSeCreo();
     }

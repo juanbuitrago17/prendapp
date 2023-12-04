@@ -15,11 +15,10 @@ if(empty($usuario) || empty($rol)){
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PRENDAPP</title>
-    
-    <link href="styleClienteImagen.css" rel="stylesheet" />
+    <link href="styleClienteImagenes.css" rel="stylesheet"/>
     <link href="stylesPaginas.css" rel="stylesheet"/>
    <link href="estylePie.css" rel="stylesheet" />
-   <link href="styleHeader.css" rel="stylesheet" />
+   <link href="styleHeaders.css" rel="stylesheet"  >
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body>
@@ -51,28 +50,19 @@ if(empty($usuario) || empty($rol)){
     <nav>   
     <br /><br />
      <br />
-    <h1 class="letras">Lo nuevo en Chaquetas</h1>
+    <h1 class="letras">LO NUEVO EN CHAQUETAS</h1>
     <div class="galeria">
-    <?php
-    include_once "conexion.php";
-
-    $sql= mysqli_query($conn,"SELECT * FROM producto");
-    if($sql !== false){
-        if(mysqli_num_rows($sql)> 0){ 
-            $i = 1; 
-            while (($producto = mysqli_fetch_assoc($sql)) && $i <= 7 ) {
-
-            echo "<a href='detalles.php?id_producto=".$producto['id_producto']."' ><img src='" .$producto['url_imagen']."'alt='".$producto['nombre']."' /> </a>";
-            $i ++;
-            
-          }
-        }
-    }
-    else {
-        echo "Error al ejecutar la tabla: ".mysqli_error($conn);
-    }
-    ?>
-
+    <?php include_once "conexion.php"; 
+    $sql= mysqli_query($conn,"SELECT * FROM producto"); 
+    if($sql !== false){ 
+        if(mysqli_num_rows($sql)> 0)
+        { $i = 1; 
+        while (($producto = mysqli_fetch_assoc($sql)) && $i <= 7 )
+        {   
+            echo "<img  src='" . $producto['url_imagen'] . "' alt='" . $producto['nombre'] . "' style='cursor: pointer;' onclick=\"window.location.href='detalles.php?id_producto=" . $producto['id_producto'] . "'\" />";
+        $i ++; }
+         } 
+         } else { echo "Error al ejecutar la tabla: ".mysqli_error($conn); } ?>
     </div>
     </nav>
     <section>
@@ -82,7 +72,7 @@ if(empty($usuario) || empty($rol)){
         </nav>
         </div>
     </section>
-  
+    
         <div class="contenedor" id="contenedor">
         <?php
     include_once "conexion.php";

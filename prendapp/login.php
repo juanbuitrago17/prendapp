@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Pagina de inicio</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+   <link href="styleTablas.css" rel="stylesheet" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -13,13 +13,13 @@
  <section class="form-d">
      <div class="form-c" >
 			<div class="box">
-    <h3>Bienvenidos</h3>
+    <h3 class="letras">Bienvenidos</h3>
 
   <center><img src="Imagenes/Prendapp-1.png" alt="Imagen de inicio de sesión" /></center>
  <form name="form11" method="post" action="login.php" >
 
     <div class="input-box" >
-     <label for="usuario">Usuario:</label>
+     <label for="usuario" class="letras">Usuario:</label>
     <input type="text" name="usuario"   class="input-control" ></input>
     <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -32,7 +32,7 @@
     </div>
         
       <div class="input-box" >
-     <label for="contrasena">Contraseña:</label>
+     <label for="contrasena" class="letras">Contraseña:</label>
     <input type="password" name="contrasena"    class="input-control" ></input>
     <?php
    
@@ -58,9 +58,12 @@
         session_start();
         $rolActual = $fila["rol"];
         $cedula = $fila["cedula"];
+        $nombreUsuario = $fila["nombre"];
         $_SESSION["usuario"]=$fila["username"];
         $_SESSION["rol"] = $rolActual;
         $_SESSION["cedula"] = $cedula;
+        $_SESSION["nombre"] = $nombreUsuario;
+
         print_r($_SESSION);
 
         switch($rolActual){
@@ -86,7 +89,7 @@ mysqli_close($conn);
      <center><input type="submit" value="Ingresar" name="ingresa" class="button button2"></td> </center><br />
 
 </form>
-     <p>No tienes una cuenta?/<a href="creaUsuarioLogin.php" class="t-text">Crear cuenta </a></p>
+     <p class="letras">No tienes una cuenta?/<a href="creaUsuarioLogin.php" class="t-text">Crear cuenta </a></p>
     </div>
 </div>
 </section>

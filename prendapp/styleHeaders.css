@@ -19,7 +19,7 @@ header {
     width: 100%;
     height: 100px;
     background-color:transparent;
-    color:black;
+    color: #11294d;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -87,6 +87,7 @@ li a {
 
 li a:hover:not(.active) {
     background-color: pink;
+    color: black;
 }
 
 .active {
@@ -97,6 +98,7 @@ li a:hover:not(.active) {
 
 li a:hover:not(.activo) {
     background-color: pink;
+    color: black;
 }
 
 .activo {
