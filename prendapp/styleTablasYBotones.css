@@ -1,16 +1,9 @@
-table, th, td {
-    margin:auto;
-    border: 1px solid #E2F6CA;
-    height: 45%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    color:white;
-}
 
 .button{
     background-color: purple;
     margin-left: 5%;
     color: white;
+    cursor: pointer;
 }
 .button:hover{
     background-color: #FF5722;

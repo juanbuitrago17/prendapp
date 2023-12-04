@@ -14,7 +14,7 @@ if(empty($cedula) || empty($rol)){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Crear Producto</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="styleTablas.css" rel="stylesheet">
+    <link href="styleTablasYBotones.css" rel="stylesheet">
 </head>
 <body>
     <section class="form-d">

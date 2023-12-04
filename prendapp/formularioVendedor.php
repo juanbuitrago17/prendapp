@@ -13,7 +13,7 @@ if(empty($cedula) ){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Crear Venta</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
+    <link href="styleTablasYBotones.css" rel="stylesheet">
 </head>
 <body>
     

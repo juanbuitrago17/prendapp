@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Pagina de inicio</title>
     <link href="stylesCrear.css" rel="stylesheet" />
-   <link href="styleTablas.css" rel="stylesheet" />
+   <link href="styleTablasYBotones.css" rel="stylesheet" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>

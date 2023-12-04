@@ -112,6 +112,9 @@ if(empty($usuario) || empty($rol)){
             $filaProducto = mysqli_fetch_assoc($buscar);
             $nuevaCantidad = $cantidad  + $filaProducto['cantidad'];
             $nuevaCantidadProducto="UPDATE inventario SET cantidad = '$nuevaCantidad' WHERE id_producto = '$id_producto'";
+            if (mysqli_query($conn, $nuevaCantidadProducto)) {
+                echo "<script>alert('El producto ya existia en el inventario,la cantidad se sumo a el inventario');</script>";
+            }
             
         }else{
 

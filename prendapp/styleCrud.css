@@ -30,7 +30,7 @@ th,
 td{
     background-color:aliceblue;
     padding: 5px;
-    color:black;
+    color:#11294d;
     
 }
 th{
@@ -154,4 +154,11 @@ h5{
     font-size: 10px;
     color:white;
     text-align: center;
+}
+.href{
+    color:purple;
+    text-decoration: none;
+}
+.href:hover{
+    color:#FF5722;
 }
