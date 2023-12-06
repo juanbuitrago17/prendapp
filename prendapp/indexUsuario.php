@@ -28,8 +28,8 @@ if(empty($usuario) || empty($rol)){
     <a class="navbar-brand" >
     <h3 style="color: white;"><img src="imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
     </a>
-    <button style="color: white;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span style="color: white;" class="navbar-toggler-icon"></span>
+    <button style="color: #11294d;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span  class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
@@ -192,6 +192,8 @@ if(empty($usuario) || empty($rol)){
         } );
     } );</script>
 
-
+<script>
+  document.querySelector('.navbar-toggler').style.backgroundColor = 'whitesmoke';
+</script>
 </body>
 </html>

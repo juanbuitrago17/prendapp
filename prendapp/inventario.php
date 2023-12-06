@@ -15,11 +15,10 @@ if(empty($usuario) || empty($rol)){
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PRENDAPP</title>
-    <link href="stylesPaginas.css" rel="stylesheet"/>
-    <link href="stylesImagenes.css" rel="stylesheet" />
-    <link href="stylesTablas.css" rel="stylesheet">
-    <link href="styleHeaders.css" rel="stylesheet"  >
-    <link href="estylePie.css" rel="stylesheet">
+    
+    <link href="styleInventario.css" rel="stylesheet"/>
+    <link href="styleHeader.css" rel="stylesheet"  >
+    <link href="stylePie.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body>
@@ -34,24 +33,20 @@ if(empty($usuario) || empty($rol)){
             <li><a href="nosotros.php">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 
-                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion</a></li>
-                <li style="float:right"><a class="active" href="crearProductos.php" >Crear Producto</a></li>
-                <li style="float:right"><a class="active" href="paginaClientes.php" >Regresar</a></li>
+                <li style="float:right"><a href="cerrarSesion.php" >Cerrar Sesion</a></li>
+                <li style="float:right"><a href="crearProductos.php" >Crear Producto</a></li>
+                <li style="float:right"><a href="paginaClientes.php" >Regresar</a></li>
             </ul>
         </div>
     </header>
-    <nav> 
         <br><br />
      <br />
-    <h1 class="letras">Administrar Inventario</h1>
+    <center><h1 class="letras">ADMINISTAR INVENTARIO</h1></center>
     <br/><br/>
-
-    <h3 class="letras">Seleccionar producto</h3>
-    <div>
-    <form id="administrarInventario" method="post" action="inventario.php">
-    
-    <div>
-    <?php
+    <div class="contenedor">
+  <div><h3 class="letras">Seleccionar producto</h3></div><br/>
+  <div><form id="administrarInventario" method="post" action="inventario.php">
+  <?php
     include_once "conexion.php";
 
     $consulta = "SELECT id_producto, nombre FROM producto WHERE cedula = ?";
@@ -64,19 +59,20 @@ if(empty($usuario) || empty($rol)){
         $productosActuales->bind_result($id_producto, $nombre);
 
        echo "<label for='id_producto' class='letras'>Seleccione el nombre del producto:</label>";
-       echo "<select name='id_producto'  id='id_producto'>";
+       echo "<select name='id_producto' class='select' id='id_producto'>";
         while($productosActuales->fetch()){
-            echo "<option value='" . $id_producto . "'style='color:black'>" . $nombre . "</option>";
+            echo "<option value='" . $id_producto . "'style='color:#11294d;'>" . $nombre . "</option>";
         }
-        echo "</select><br><br>";
+        echo "</select></div><br/>";
         $productosActuales->close();
     }
     
     ?>
-    </div>
+    
+
     <div>
     <label for="cantidad" class="letras">Ingrese la cantidad de productos:</label>
-    <input type="text" name="cantidad" class="input-control">
+    <input class="cantidad" type="text" name="cantidad" class="input-control">
     <?php
         $valida = true;
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -92,12 +88,15 @@ if(empty($usuario) || empty($rol)){
             }
         }
     ?>
+   
     <br><br>
-    </div>
+    
     <div>
-        <button type="submit" value="Agregar" name="administrarInventario" >Agregar</button>
+        <button type="submit" class="button" value="Agregar" name="administrarInventario" >Agregar</button>
     </div>
     </form>
+  </div>
+</div>
     <?php
      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["administrarInventario"])){
         $id_producto = $_POST["id_producto"];
@@ -139,9 +138,13 @@ if(empty($usuario) || empty($rol)){
     </div>
     <br/><br/>
 
-    <h3 class="letras">Inventario</h3>
+    <center><h3 class="letras">INVENTARIO</h3></center>
     <br/><br/>
     
+    
+
+
+
     <div>
     <?php
     $sql = "SELECT i.id_inventario, p.id_producto, p.nombre AS nombre_producto, i.cantidad FROM inventario i JOIN producto p ON i.id_producto = p.id_producto WHERE p.cedula = ?";
@@ -161,11 +164,11 @@ if(empty($usuario) || empty($rol)){
                   <td>".$cantidad. "</td>
                   <td><form method='post' action='actualizarInventario.php'>
                   <input type='hidden' name='id_inventario' value='".$id_inventario."'>
-                  <button type='submit' class='a button3' onclick='return confirm(\"¿Estás seguro de que quieres actualizar este Inventario?\")'>Actualizar</button>
+                  <button type='submit' class='link' onclick='return confirm(\"¿Estás seguro de que quieres actualizar este Inventario?\")'>Actualizar</button>
               </form></td>
               <td><form method='post' action='actualizarProducto.php'>
               <input type='hidden' name='id_producto' value='".$id_producto."'>
-              <button type='submit' class='a button3' onclick='return confirm(\"¿Estás seguro de que quieres actualizar este Inventario?\")'>Actualizar Producto</button>
+              <button type='submit' class='link' onclick='return confirm(\"¿Estás seguro de que quieres actualizar este Inventario?\")'>Actualizar Producto</button>
           </form></td></tr>";
         }
         echo "</table><br><br>";
@@ -174,8 +177,6 @@ if(empty($usuario) || empty($rol)){
     mysqli_close($conn);
     ?>
     </div>
-    </nav> 
-    
 </body>
 <footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>

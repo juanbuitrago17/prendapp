@@ -27,8 +27,8 @@ if(empty($usuario) || empty($rol)){
     <a class="navbar-brand" >
     <h3 style="color: white;"><img src="imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
     </a>
-    <button style="color: white;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span style="color: white;" class="navbar-toggler-icon"></span>
+    <button style="color: #11294d;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span  class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
@@ -66,7 +66,7 @@ if(empty($usuario) || empty($rol)){
        
     <div style="text-align:center;" >
         <h1 style="color: blueviolet;">Bienvenido</h1>
-        <p >Listado De Usuarios</p>
+        <p >Listado De Facturas</p>
         
     </div>
     <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Imprimir' name='agregar' onclick="window.print();" class='button '>
@@ -155,6 +155,9 @@ if(empty($usuario) || empty($rol)){
         window.location = "crearFactura.php";
     }
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
@@ -175,7 +178,9 @@ if(empty($usuario) || empty($rol)){
                 .draw();
         } );
     } );</script>
-
+<script>
+  document.querySelector('.navbar-toggler').style.backgroundColor = 'whitesmoke';
+</script>
 
 </body>
 </html>

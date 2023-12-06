@@ -14,10 +14,9 @@ if(empty($usuario) || empty($rol)){
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PRENDAPP</title>
-    <link href="stylesPaginas.css" rel="stylesheet" />
-    <link href="stylesImagenes.css" rel="stylesheet" />
+    <link href="styleDetalles.css" rel="stylesheet">
     <link href="styleHeaders.css" rel="stylesheet"  >
-    <link href="estylePie.css" rel="stylesheet" />
+    <link href="stylePie.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body><header>
@@ -32,8 +31,8 @@ if(empty($usuario) || empty($rol)){
             <li><a href="nosotros.php">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 
-                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion </a></li>
-                <li style="float:right"><a class="active" href="paginaClientes.php" >Regresar</a></li>
+                <li style="float:right"><a href="cerrarSesion.php" >Cerrar Sesion </a></li>
+                <li style="float:right"><a href="paginaClientes.php" >Regresar</a></li>
             </ul>
         </div>
     </header>
@@ -42,7 +41,7 @@ if(empty($usuario) || empty($rol)){
 <nav> 
     <br><br />
     <br />
-<h1 class="letras">Detalles de producto</h1>
+<center> <h1  class="letras">DETALLES DEL PRODUCTO</h1></center>
 <br/><br/>
 
 
@@ -63,34 +62,38 @@ if(!empty($idProducto)){
 }
 
 ?>
-</div>
-<div class="contenedor" id="contenedor">
 <?php
 if($resultado->num_rows == 1){
 ?>
-<h3 class="letras">Nombre del producto:  <?php echo $producto['nombre']  ?></h3> <br/><br/>
-<h3 class="letras">Recomendado para clima:  <?php echo $producto['clima']  ?></h3> <br/><br/>
-<h3 class="letras">La talla del producto:  <?php echo $producto['talla']  ?></h3> <br/><br/>
-<h3 class="letras">El color del producto:  <?php echo $producto['color']  ?></h3> <br/><br/>
-<h3 class="letras">El producto esta diseñado para el genero:  <?php echo $producto['genero']  ?></h3> <br/><br/>
-<h3 class="letras">El producto tiene un valor de :  <?php echo "COP ". $producto['precio']  ?></h3> <br/><br/>
-<?php echo "<img src='" .$producto['url_imagen']."' width='100%' alt='".$producto['nombre']."' />"?><br/><br/>
+<div class="contenedor">
+  <div class="producto">
+  <?php echo "<img class='imagen' src='" .$producto['url_imagen']."' alt='".$producto['nombre']."' />"?>
+   <div class="description"> 
+  <div class="text"><strong>Nombre: </strong><?php echo $producto['nombre']  ?></div>
+   <div class="text"><strong>color: </strong><?php echo $producto['color']  ?></div>
+   <div class="text"><strong>Talla: </strong><?php echo $producto['talla']  ?></div>
+   <div class="text"><strong>Genero: </strong><?php echo $producto['genero']  ?></div>
+  <div class="text"><strong>Clima: </strong><?php echo $producto['clima']  ?></div>
+  <div class="text"><strong>precio: </strong><?php echo "COP " . $producto['precio'] ?></div>
+    </div>
+    </div>
+</div>
+  <div class="comprar">
+    <div >
 <?php
 if($producto['cantidad']>= 1){
-?>
-    <form id="administrarInventario" method="post" action="venta.php">
-    <label for='cantidad_producto' class="letras">Seleccione la cantidad del producto:</label>
-    <select name='cantidad_producto'  id='cantidad_producto'>
+?>   
+<form id="administrarInventario" method="post"action="venta.php">
+  <label for='cantidad_producto' class="letras">Seleccione la cantidad del producto:</label> 
+    <select  name='cantidad_producto'  id='cantidad_producto' class="select">
     <?php
     $contar = 1;
     while($producto['cantidad']>=$contar){
     echo  "<option value='".$contar."'style='color:black'>" . $contar . "</option>";
     $contar ++; 
     }  
-    echo"</select><br><br>";
+    echo"</select></div> ";
     ?> 
-
-       
     <input type="hidden" id="id_producto"
     name="id_producto" value="<?php echo $producto['id_producto'];?>"/>
     <input type="hidden" id="nombre"
@@ -101,19 +104,21 @@ if($producto['cantidad']>= 1){
     name="precio" value="<?php echo $producto['precio'];?>"/>
     <input type="hidden" id="cantidad"
     name="cantidad" value="<?php echo $producto['cantidad'];?>"/>
-    <button type="submit" value="Comprar" name="venta" >Comprar</button>
+    <div><button type="submit" value="Comprar" name="venta" class="button" >Comprar</button></div>
     </form>
+    </div>
     <?php
-    }else{  
-        echo "<h3 class='letras'>LO SENTIMOS ESTE PRODUCTO ESTA AGOTADO </h3>";
+    }else{ 
+        echo "<div>" ;
+        echo "<h3 class='letras'>LO SENTIMOS ESTE PRODUCTO ESTA  AGOTADO </h3>";
+        "</div>";
     }
+
 }
 ?>
-
 </div>
-<div>        
-</div>
-</nav> 
+       
+<br><br><br><br>
 
 </body>
 <footer style="min-height:30vh">

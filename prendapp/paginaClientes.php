@@ -17,8 +17,8 @@ if(empty($usuario) || empty($rol)){
     <title>PRENDAPP</title>
     <link href="styleClienteImagenes.css" rel="stylesheet"/>
     <link href="stylesPaginas.css" rel="stylesheet"/>
-   <link href="estylePie.css" rel="stylesheet" />
-   <link href="styleHeaders.css" rel="stylesheet"  >
+   <link href="stylePie.css" rel="stylesheet" />
+   <link href="styleHeader.css" rel="stylesheet"  >
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body>
@@ -33,13 +33,13 @@ if(empty($usuario) || empty($rol)){
             <li><a href="nosotros.php">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 
-                <li style="float:right"><a class="active" href="cerrarSesion.php" >Cerrar Sesion </a></li>
+                <li style="float:right"><a  href="cerrarSesion.php" >Cerrar Sesion </a></li>
                 <li style="float:right">
                 <?php
                 if($rol == 'CLIENTE'){
-                    echo"<a class='active' href='formularioVendedor.php' >Quiero Vender</a>";
+                    echo"<a  href='formularioVendedor.php' >Quiero Vender</a>";
                 }elseif ($rol == 'VENDEDOR') {
-                    echo "<a class='active' href='inventario.php' >Vender </a>";
+                    echo "<a  href='inventario.php' >Vender </a>";
                 }
                 ?>
                 </li>

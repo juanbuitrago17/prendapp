@@ -1,0 +1,83 @@
+body {
+    font-family:sans-serif;
+    background: #eeeeee;
+  }
+  .contenedor{
+    margin:20px auto;
+    width:100%;
+    max-width:700px;
+    border: 1px solid #999;
+    padding: 20px;
+    background:white;
+    box-shadow:0 10px 50px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+   .button{
+      margin-top:10px;
+     margin:10px;
+      background:purple;
+      color:white;
+      font-size:15px;
+      padding: 5px;
+      width: 100px;
+      cursor:pointer;
+    }
+    .button:hover{
+      background: #FF5722;
+    }
+  .select{
+      padding:5px;
+      border: 2px solid #ccc;
+      border-radius:8px;
+      outline: none;
+      color: #11294d;
+      background-color: #fff;
+      transition:border-color 0.3s;
+      margin: 15px;
+    }
+    .select:focus{
+      border-color:#8a2be2;
+    }
+    .select::-ms-expand{
+      display:none;
+    }
+    select:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+    }
+  
+  .cantidad{
+     border: 2px solid ;
+     border-radius:8px;
+     color : purple;
+  }
+  .letras{
+      color: #11294d;
+      font-size:18px;
+    }
+  table, th, td {
+      margin:auto;
+      border: 1px solid purple;
+      height: 45%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      color:#11294d;
+      font-size:18px;
+    text-align: center;
+    
+  }
+  table{
+    box-shadow:0 10px 50px rgba(0,0,0,0.3);
+  }
+  th, td{
+    padding: 9px;
+  }
+  .link{
+    color:purple;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  .link:hover{
+    color:#FF5722;
+  }

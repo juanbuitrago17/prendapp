@@ -1,8 +1,6 @@
 :root{
 	--green:                hsl(162, 45%, 56%);
     --lead:                 hsl(162,  2%, 56%);
-    --blue:                 hsl(220, 85%, 57%);
-    --violet:               hsl(272, 92%, 32%);
     --tex-white:            hsl(0, 0%, 100%);
     --text-ligth-gray:      hsl(0, 0%, 90%);
     --body-bg-color:        hsl(200, 54%, 12%);

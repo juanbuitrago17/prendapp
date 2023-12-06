@@ -59,9 +59,9 @@ if(empty($usuario) || empty($rol)){
         </div>
             <ul>
                 <li><a href="#contacto">Contacto</a></li>
-                <li style="float:right"><a class="active" href="cerrarSesion.php">Cerrar Sesion</a></li>
+                <li style="float:right"><a href="cerrarSesion.php">Cerrar Sesion</a></li>
                 
-                <li style="float:right"><a class="activo" href="paginaClientes.php">Regresar</a></li>
+                <li style="float:right"><a href="paginaClientes.php">Regresar</a></li>
             </ul>
         </div>
     </header>
