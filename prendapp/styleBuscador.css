@@ -1,0 +1,37 @@
+body{
+    font-family:sans-serif;
+      background: #eeeeee;
+  }
+   .button1, button{
+     border:none;
+     border-radius:6px;
+     cursor:pointer;
+     font-size:20px;
+     padding:7px;
+      }
+  .button1{
+  background-color:purple;
+    color:white;
+  }
+  .button{
+   background-color: #7f8c8d;
+    color:#fff;
+      }
+  .button:hover, .button1:hover{
+   background-color: #FF5722;
+   
+      }
+  .formulario{
+    margin-left:60px;
+    max-width:700px;
+    text-align:center;
+  }
+  .buscador{
+    width:70%;
+    padding:8px;
+    box-sizing:border-box;
+    border: 2px solid purple;
+    border-radius: 6px;
+    font-size:16px;
+    outline:none;
+  }
