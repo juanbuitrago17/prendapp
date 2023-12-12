@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Login</title>
     <link href="stylePie.css" rel="stylesheet" />
@@ -31,74 +31,32 @@
     <h3 class="letras">Bienvenidos</h3>
 
   <center><img src="Imagenes/Prendapp-1.png" alt="Imagen de inicio de sesión" /></center>
- <form name="form11" method="post" action="login.php" >
+ <form name="form11" method="post" action="validacionLogin.php" >
 
     <div class="input-box" >
      <label for="usuario" class="letras">Usuario:</label>
     <input type="text" name="usuario"   class="input-control" ></input>
-    <?php
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $usuario = $_POST["usuario"];
-        if(empty($usuario)){
-            echo"<p class='p'>El campo es obligatorio</p>";
-        }
-    }    
-    ?>
+   
     </div>
         
       <div class="input-box" >
      <label for="contrasena" class="letras">Contraseña:</label>
     <input type="password" name="contrasena"    class="input-control" ></input>
     <?php
-   
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $contrasena = $_POST["contrasena"];
-        if(empty($contrasena)){
-            echo"<p class='p'>El campo es obligatorio</p>";
-        }
-    ?>
-    <?php
-    
-    include_once "conexion.php";
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    $usuario = $_POST["usuario"];
-    $contrasena = $_POST["contrasena"];
-    
-    $consulta= "SELECT * FROM usuario WHERE username='$usuario' AND password='$contrasena' ";
-    $resultado=$conn->query($consulta);
-    
-    if ($resultado->num_rows == 1){
-        $fila = $resultado->fetch_assoc();
-        session_start();
-        $rolActual = $fila["rol"];
-        $cedula = $fila["cedula"];
-        $nombreUsuario = $fila["nombre"];
-        $_SESSION["usuario"]=$fila["username"];
-        $_SESSION["rol"] = $rolActual;
-        $_SESSION["cedula"] = $cedula;
-        $_SESSION["nombre"] = $nombreUsuario;
-
-        print_r($_SESSION);
-
-        switch($rolActual){
-            case 'CLIENTE':
-            case 'VENDEDOR':
-                header("Location: paginaClientes.php");
-                break;
-            case 'ADMINISTRADOR':
-                header("Location: indexUsuario.php");
-                break;
-        }
-        
-    }else {
-        echo"<p class='p'>Usuario y/o contraseña no son validos</p>";
+if (isset($_GET['error'])) {
+   $error = $_GET['error'];
+   switch ($error) {
+        case 1:
+            echo"<p class='p'>El campo usuario es obligatorio</p>";
+            break;
+        case 2:
+           echo"<p class='p'>El campo contraseña es obligatorio</p>";
+           break;
+        case 3:
+           echo"<p class='p'>Usuario y/o contraseña no son validos</p>";
+            break;
     }
-  
 }
-mysqli_close($conn);
-    }
-
 ?>
      </div>    
      <center><input type="submit" value="Ingresar" name="ingresa" class="button button2"></td> </center><br />

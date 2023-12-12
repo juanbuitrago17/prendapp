@@ -81,16 +81,17 @@
     </div>
 		
 	</section>
-    <?php
+	    <?php
 if(isset($_POST["crearInventario"])){
     $id_producto = $_POST["id_producto"];
     $cantidad = $_POST["cantidad"];
     $FechaCreacion = date("Y-m-d");
+    $FechaInventario = date("Y-m-d");
    
     if($valida == True){
     include_once "conexion.php";
-    $sql= "INSERT INTO inventario(id_producto,cantidad,fechaCreacion) VALUES ('$id_producto','$cantidad','$FechaCreacion')";
-
+   $sql = "INSERT INTO inventario(id_producto,cantidad,fechaCreacion,fechaActualizacion) VALUES ('$id_producto','$cantidad','$FechaCreacion', '$FechaInventario')";
+ echo "$sql";
     function seCreo(){
         echo "<script>alert('Se registró el Inventario'); window.location.href = 'indexInventario.php';</script>";
     }
@@ -132,3 +133,4 @@ if(isset($_POST["crearInventario"])){
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright ©2023 My Website. Todos los derechos reservados a PRENDAPP.</p>
 </footer>
 </html>
+

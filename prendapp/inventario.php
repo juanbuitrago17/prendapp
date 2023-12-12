@@ -101,8 +101,8 @@ if(empty($usuario) || empty($rol)){
      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["administrarInventario"])){
         $id_producto = $_POST["id_producto"];
         $cantidad = $_POST["cantidad"];
-        $FechaCreacion = date("Y-m-d");
-    
+        $fechaCreacion = date("Y-m-d");
+        $fechaActualizacion2 = date("Y-m-d");
         if($valida == True){
         include_once "conexion.php";
         $buscar= mysqli_query($conn,"SELECT * FROM inventario WHERE id_producto = '$id_producto'");
@@ -117,7 +117,7 @@ if(empty($usuario) || empty($rol)){
             
         }else{
 
-        $sql= "INSERT INTO inventario(id_producto,cantidad,fechaCreacion) VALUES ('$id_producto','$cantidad','$FechaCreacion')";
+       $sql = "INSERT INTO inventario(id_producto,cantidad,fechaCreacion,fechaActualizacion) VALUES ('$id_producto','$cantidad','$fechaCreacion','$fechaActualizacion2')";
 
         function seCreo(){
             echo "<script>alert('Se registró el Inventario');</script>";
@@ -140,9 +140,6 @@ if(empty($usuario) || empty($rol)){
 
     <center><h3 class="letras">INVENTARIO</h3></center>
     <br/><br/>
-    
-    
-
 
 
     <div>
