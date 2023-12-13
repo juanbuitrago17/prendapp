@@ -25,7 +25,7 @@ if(empty($usuario) || empty($rol)){
 <nav class="navbar navbar-light bg-ligh fixed-top"  style="background-color:purple;" >
   <div class="container-fluid"  >
     <a class="navbar-brand" >
-    <h3 style="color: white;"><img src="imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
+    <h3 style="color: white;"><img src="Imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
     </a>
     <button style="color: #11294d;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span  class="navbar-toggler-icon"></span>
@@ -70,6 +70,7 @@ if(empty($usuario) || empty($rol)){
         
     </div>
     <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Imprimir' name='agregar' onclick="window.print();" class='button '>
+     <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Excel' name='agregar' onclick="paginaExcel();" class='button '>
     <input type='button' style="font-size:20px;padding:2px;width:80px;" value='Crear' name='agregar' onclick='paginaRegistro()' class='button '><br><br>
     <?php
     include_once "conexion.php";
@@ -126,7 +127,7 @@ mysqli_close($conn);
             <br>
            
             <p class="pt" style="font-size: 12px;" >
-            <img  class="img-t" src="imagenes/Prendapp-1.png" alt="Descripción de la imagen">
+            <img  class="img-t" src="Imagenes/Prendapp-1.png" alt="Descripción de la imagen">
             &nbsp;
             Bogota-Colombia
             310546986-3124596564&
@@ -154,6 +155,9 @@ mysqli_close($conn);
 function paginaRegistro(){
 window.location = "crearInventario.php";
 }
+function paginaExcel(){
+        window.location = "generalExcelInventario.php"; 
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head >
@@ -43,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_factura'])) {
         <div class="form-c" >
               <div class="box">
     
-    <form id="form10" method="post" action="actualizarFactura.php">
+    <form id="form10" method="post" action="actualizarFactura.php" onsubmit="return validarFormulario()">
     
           <div class="input-box" >
           <input type="hidden" name="id_factura" value="<?php echo isset($factura['id_factura']) ? $factura['id_factura'] : ''; ?>"  class="input-control" ></input>
@@ -61,44 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_factura'])) {
             ?>
           <div class="input-box" >
           <label for="total">Total de la compra:</label>
-          <input type="text" name="total" value="<?php echo isset($factura['totalCompra']) ? $factura['totalCompra'] : ''; ?>" class="input-control" ></input>
-          <?php
-          $valida = true;
-          if (isset($_POST["actualizarFactura"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $total = $_POST["total"];
-                if(empty($total)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^\d+(\.\d{1,2})?$/", $total)){
-                        echo "<p class='p'>Ingrese el total de la compra  válido</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+          <input type="text" id="total" name="total" value="<?php echo isset($factura['totalCompra']) ? $factura['totalCompra'] : ''; ?>"  class="input-control" ></input>
+          <span class="p" id="totalError"></span>
           </div>
           <div class="input-box" >
           <label for="cantidadProductos">Cantidad de productos de la compra:</label>
-          <input type="text" name="cantidadProductos" value="<?php echo isset($factura['cantidadProductos']) ? $factura['cantidadProductos'] : ''; ?>" class="input-control" ></input>
-          <?php
-          if (isset($_POST["actualizarFactura"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $cantidadProductos = $_POST["cantidadProductos"];
-                if(empty($cantidadProductos)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^[0-9]+$/", $cantidadProductos)){
-                        echo "<p class='p'>Ingrese un código válido</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+          <input type="text" id="cantidadProductos" name="cantidadProductos" value="<?php echo isset($factura['cantidadProductos']) ? $factura['cantidadProductos'] : ''; ?>" class="input-control" ></input>
+          <span class="p" id="cantidadError"></span>
           </div>
 
          <center><input type="submit" value="Actualizar" name="actualizarFactura" class="button button2"></td> </center><br />
@@ -119,7 +98,7 @@ if(isset($_POST["actualizarFactura"])){
     $total = $_POST["total"];
     $cantidadProductos = $_POST["cantidadProductos"];
 
-    if($valida == True){
+   
      include_once "conexion.php";
     $sql= "UPDATE factura SET totalCompra='$total',  cantidadProductos='$cantidadProductos'  WHERE id_factura='$id_factura'";
 
@@ -136,10 +115,34 @@ if(isset($_POST["actualizarFactura"])){
         echo noSeCreo();
     }
     mysqli_close($conn);
-    }
 }
 ?>
 </body>
+<script>
+    function validarFormulario(){
+        document.getElementById("totalError").textContent = "";
+        document.getElementById("cantidadError").textContent = "";
+        
+        var total = document.getElementById('total').value;
+        if(total.trim()== ""){
+            document.getElementById("totalError").textContent = "La compra total es requerida";
+            return false;
+        }else if(!/^[0-9]+$/.test(total)){
+             document.getElementById("totalError").textContent = "El total no es numerico, sin puntos ";
+            return false;
+        }
+        
+        var cantidad = document.getElementById('cantidadProductos').value;
+        if(cantidad.trim()== ""){
+            document.getElementById("cantidadError").textContent = "La cantidad del producto es requerida";
+            return false;
+        }else if(!/^[0-9]+$/.test(cantidad)){
+             document.getElementById("cantidadError").textContent = "La cantidad debe ser numerica ";
+            return false;
+        }
+        return  true;
+    }
+</script>
 <footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    

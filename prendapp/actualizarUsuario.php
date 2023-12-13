@@ -54,149 +54,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cedula'])) {
               <div class="box">
 
     
-    <form name="form2" method="post" action="actualizarUsuario.php">
+    <form name="form2" method="post" action="actualizarUsuario.php" onsubmit="return validarFormulario()">
       
         <div class="input-box">
             <label for="cedula">Ingrese su cedula:</label>
-            <input type="text" name="cedula" value="<?php echo isset($usuario['cedula']) ? $usuario['cedula'] : ''; ?>"  class="input-control"></input>
-            <?php
-            $valida = true;
-            if (isset($_POST["actualizarUsuarios"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $cedula = $_POST["cedula"];
-                if(empty($cedula)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^\d{8,10}$/", $cedula)){
-                        echo "<p class='p'>La cedula debe tener entre 8 y 10 dígitos</p>";
-                    $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+            <input type="text" id="cedula" name="cedula" value="<?php echo isset($usuario['cedula']) ? $usuario['cedula'] : ''; ?>"  class="input-control"></input>
+            <span class="p" id="cedulaError"></span>
         </div>
 
 
         <div class="input-box">
             <label for="nombre">Ingrese su nombre:</label>
-            <input type="text" name="nombre" value="<?php echo isset($usuario['nombre']) ? $usuario['nombre'] : ''; ?>"  class="input-control"></input>
-            <?php
-            if (isset($_POST["actualizarUsuarios"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $nombre = $_POST["nombre"];
-                if(empty($nombre)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^[a-zA-Z\s]+$/", $nombre)){
-                        echo "<p class='p'>El campo no tiene el formato correcto</p>";
-                        $valida = false;
-                    } 
-                }
-            }
-        }
-            
-           ?>
+            <input type="text" id="nombre" name="nombre" value="<?php echo isset($usuario['nombre']) ? $usuario['nombre'] : ''; ?>"  class="input-control"></input>
+            <span class="p" id="nombreError"></span>
             </div>
 
           <div class="input-box" >
        <label for="telefono">Ingrese su telefono:</label>
-      <input type="text" name="telefono" value="<?php echo isset($usuario['telefono']) ? $usuario['telefono'] : ''; ?>"  class="input-control" ></input>
-      <?php 
-      if (isset($_POST["actualizarUsuarios"])) {
-        $telefono = $_POST["telefono"];
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
-                if (empty($telefono)) {
-                    echo "<p style='color: red;'>El campo teléfono es obligatorio</p>";
-                    $valida = false;
-                } else {
-                    if (!preg_match("/^\d{10}$/", $telefono)) {
-                        echo "<p style='color: red;'>El teléfono debe tener 10 dígitos</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-        ?>
+      <input type="text" id="telefono" name="telefono" value="<?php echo isset($usuario['telefono']) ? $usuario['telefono'] : ''; ?>"  class="input-control" ></input>
+      <span class="p" id="telefonoError"></span>
         </div>
 
         <div class="input-box" >
         <label for="correo">Ingrese un correo:</label>
-      <input type="text" name="correo"  TextMode="Email" value="<?php echo isset($usuario['correo']) ? $usuario['correo'] : ''; ?>" class="input-control" ></input>
-      <?php
-
-      if (isset($_POST["actualizarUsuarios"])) {
-        $correo = $_POST["correo"];
-      if($_SERVER["REQUEST_METHOD"] == "POST"){
-               
-                if(empty($correo)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $correo)){
-                        echo "<p class='p'>El campo no es un correo</p>";
-                        $valida = false;
-                    } 
-                }
-            }
-        }
-        ?>
+      <input type="text"  id="correo" name="correo"  TextMode="Email" value="<?php echo isset($usuario['correo']) ? $usuario['correo'] : ''; ?>" class="input-control" ></input>
+      <span class="p" id="correoError"></span>
          </div>
        
        <div class="input-box" >
        <label for="direccion">Ingrese su direccion:</label>
-      <input type="text" name="direccion" value="<?php echo isset($usuario['direccion']) ? $usuario['direccion'] : ''; ?>"  class="input-control" ></input>
-      <?php
-      if (isset($_POST["actualizarUsuarios"])) {
-        $direccion = $_POST["direccion"];
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            
-            if(empty($direccion)){
-                echo "<p style='color: red;'>El campo direccion es obligatorio</p>"; 
-                $valida = false;
-            }
-        }
-    }
-      ?>
+      <input type="text" id="direccion" name="direccion" value="<?php echo isset($usuario['direccion']) ? $usuario['direccion'] : ''; ?>"  class="input-control" ></input>
+      <span class="p" id="direccionError"></span>
        </div>
+       
       <div class="input-box">
        <label for="txtciudad">Ingrese su ciudad:</label>
-      <input type="text" name="ciudad" value="<?php echo isset($usuario['ciudad']) ? $usuario['ciudad'] : ''; ?>"   class="input-control" ></input>
-      <?php
-      if (isset($_POST["actualizarUsuarios"])) {
-            $ciudad = $_POST["ciudad"];
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                if(empty($ciudad)){
-                    echo"<p class='p'>El campo ciudad es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^[a-zA-Z\s]+$/", $ciudad)){
-                        echo "<p class='p'>Ingrese una ciudad  válida</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+      <input type="text" id="ciudad" name="ciudad" value="<?php echo isset($usuario['ciudad']) ? $usuario['ciudad'] : ''; ?>"   class="input-control" ></input>
+      <span class="p" id="ciudadError"></span>
  </div>
+ 
           <div class="input-box" >
        <label for="username">Ingrese un usuario:</label>
-      <input type="text" name="username" value="<?php echo isset($usuario['username']) ? $usuario['username'] : ''; ?>" class="input-control" ></input>
-      <?php
-      if (isset($_POST["actualizarUsuarios"])) {
-        $usuario = $_POST["username"];
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-            if (empty($usuario)) {
-                echo "<p style='color: red;'>El campo usuario es obligatorio</p>";
-                $valida = false;
-            }
-        }
-    }
-        ?>
+      <input type="text" id="username" name="username" value="<?php echo isset($usuario['username']) ? $usuario['username'] : ''; ?>" class="input-control" ></input>
+      <span class="p" id="usernameError"></span>
       </div>
 
                 <center><input type="submit" value="Actualizar" name="actualizarUsuarios" class="button button2"></td> </center><br />
@@ -226,7 +126,7 @@ if (isset($_POST["actualizarUsuarios"])) {
     $ciudad = $_POST["ciudad"];
     $usuario = $_POST["username"];
 
-    if($valida == True){
+   
     include_once "conexion.php";
     $sql = "UPDATE usuario SET cedula='$cedula', nombre='$nombre',telefono='$telefono', correo='$correo',  direccion='$direccion',ciudad='$ciudad',username='$usuario' WHERE cedula='$cedula'";
  
@@ -245,11 +145,83 @@ if (isset($_POST["actualizarUsuarios"])) {
         echo noSeCreo();
     }
     mysqli_close($conn);
-}
+
 }
 ?>
 
 </body>
+<script>
+    function validarFormulario(){
+        document.getElementById("cedulaError").textContent = "";
+        document.getElementById("nombreError").textContent = "";
+        document.getElementById("telefonoError").textContent = "";
+        document.getElementById("correoError").textContent = "";
+        document.getElementById("direccionError").textContent = "";
+        document.getElementById("ciudadError").textContent = "";
+        document.getElementById("usernameError").textContent = "";
+       
+        
+        var cedula = document.getElementById('cedula').value;
+        if(cedula.trim()== ""){
+            document.getElementById("cedulaError").textContent = "La cedula es requerida";
+            return false;
+        }else if(!/^\d{8,10}$/.test(cedula)){
+            document.getElementById("cedulaError").textContent = "La cedula debe tener entre 8 y 10 dígitos";
+            return false;
+        }
+        
+        var nombre = document.getElementById('nombre').value;
+        if(nombre.trim()== ""){
+            document.getElementById("nombreError").textContent = "El nombre es requerido";
+            return false;
+        }else if(!/^[a-zA-Z\s]+$/.test(nombre)){
+             document.getElementById("nombreError").textContent = "El nombre solo debe contener letras ";
+            return false;
+        }
+        
+        var telefono = document.getElementById('telefono').value;
+        if(telefono.trim()== ""){
+            document.getElementById("telefonoError").textContent = "El telefono es requerido";
+            return false;
+        }else if(!/^\d{10}$/.test(telefono)){
+             document.getElementById("telefonoError").textContent = "El teléfono debe tener 10 dígitos";
+            return false;
+        }
+        
+        var correo = document.getElementById('correo').value;
+        if(correo.trim()== ""){
+            document.getElementById("correoError").textContent = "El correo es requerido";
+            return false;
+        }else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(correo)){
+             document.getElementById("correoError").textContent = "El correo electrónico no es válido";
+            return false;
+        }
+        
+        var direccion = document.getElementById('direccion').value;
+        if(direccion.trim()== ""){
+            document.getElementById("direccionError").textContent = "La direccion es requerida";
+            return false;
+        }
+        
+         var ciudad = document.getElementById('ciudad').value;
+        if(ciudad.trim()== ""){
+            document.getElementById("ciudadError").textContent = "La ciudad es requerida";
+            return false;
+        }else if(!/^[a-zA-Z\s]+$/.test(ciudad)){
+             document.getElementById("ciudadError").textContent = "La ciudad no debe tener numeros";
+            return false;
+        }
+        
+         var username = document.getElementById('username').value;
+        if(username.trim()== ""){
+            document.getElementById("username").textContent = "El usuario es requerido";
+            return false;
+        }
+        
+        
+        return  true;
+    }
+</script>
 <footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    

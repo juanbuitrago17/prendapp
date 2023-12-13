@@ -25,7 +25,7 @@ if(empty($usuario) || empty($rol)){
 <nav class="navbar navbar-light bg-ligh fixed-top"  style="background-color:purple;" >
   <div class="container-fluid"  >
     <a class="navbar-brand" >
-    <h3 style="color: white;"><img src="imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
+    <h3 style="color: white;"><img src="Imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
     </a>
     <button style="color: #11294d;" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span  class="navbar-toggler-icon"></span>
@@ -70,6 +70,7 @@ if(empty($usuario) || empty($rol)){
         
     </div>
     <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Imprimir' name='agregar' onclick="window.print();" class='button '>
+     <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Excel' name='agregar' onclick="paginaExcel();" class='button '>
     <input type='button' style="font-size:20px;padding:2px;width:80px;" value='Crear' name='agregar' onclick='paginaRegistro()' class='button '><br><br>
     <?php
     include_once "conexion.php";
@@ -128,7 +129,7 @@ if(empty($usuario) || empty($rol)){
             <br>
            
             <p class="pt" style="font-size: 12px;" >
-            <img  class="img-t" src="imagenes/Prendapp-1.png" alt="Descripción de la imagen">
+            <img  class="img-t" src="Imagenes/Prendapp-1.png" alt="Descripción de la imagen">
             &nbsp;
             Bogota-Colombia
             310546986-3124596564&
@@ -157,6 +158,9 @@ if(empty($usuario) || empty($rol)){
 <script>
     function paginaRegistro(){
         window.location = "crearVenta.php";
+    }
+    function paginaExcel(){
+        window.location = "generalExcelVenta.php"; 
     }
 </script>   
 

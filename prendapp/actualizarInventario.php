@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_inventario'])) {
         <div class="form-c" >
               <div class="box">
     
-    <form id="form6" method="post" action="actualizarInventario.php">
+    <form id="form6" method="post" action="actualizarInventario.php" onsubmit="return validarFormulario()">
     
            
     <div class="input-box">
@@ -72,23 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_inventario'])) {
         
         <div class="input-box">
             <label for="cantidad">Ingrese la cantidad de productos:</label>
-            <input type="text" name="cantidad" value="<?php echo isset($inventario['cantidad']) ? $inventario['cantidad'] : ''; ?>"  class="input-control"></input>
-            <?php
-            if (isset($_POST["actualizarInventario"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $cantidad = $_POST["cantidad"];
-                if(empty($cantidad)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^[0-9]+$/", $cantidad)){
-                        echo "<p class='p'>El campo no tiene el formato correcto</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+            <input type="text" id="cantidad" name="cantidad" value="<?php echo isset($inventario['cantidad']) ? $inventario['cantidad'] : ''; ?>"  class="input-control"></input>
+            <span class="p" id="cantidadError"></span>
         </div>
 
          <center><input type="submit" value="Actualizar" name="actualizarInventario" class="button button2"></td> </center><br />
@@ -146,6 +131,23 @@ if (isset($_POST["actualizarInventario"])) {
 }
 ?>
 </body>
+<script>
+    function validarFormulario(){
+        document.getElementById("cantidad").textContent = "";
+        
+        var cantidad = document.getElementById('cantidad').value;
+        if(cantidad.trim()== ""){
+            document.getElementById("cantidadError").textContent = "La cantidad del producto es requerida";
+            return false;
+        }else if(!/^[0-9]+$/.test(cantidad)){
+             document.getElementById("cantidadError").textContent = "La cantidad debe ser numerica ";
+            return false;
+        }
+        
+        
+        return  true;
+    }
+</script>
 <footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    

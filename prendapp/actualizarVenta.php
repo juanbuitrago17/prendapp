@@ -1,3 +1,13 @@
+<?php
+session_start();
+$usuario = $_SESSION['usuario'];
+$rol = $_SESSION["rol"];
+
+if(empty($usuario) || empty($rol)){
+    header('Location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head >
@@ -43,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_venta'])) {
         <div class="form-c" >
               <div class="box">
     
-    <form id="form8" method="post" action="actualizarVenta.php">
+    <form id="form8" method="post" action="actualizarVenta.php" onsubmit="return validarFormulario()">
     
           <div class="input-box" >
           <input type="hidden" name="id_venta" value="<?php echo isset($venta['id_venta']) ? $venta['id_venta'] : ''; ?>"  class="input-control" ></input>
@@ -63,43 +73,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_venta'])) {
 
           <div class="input-box" >
           <label for="cantidadProductos">Ingrese la cantidad de productos:</label>
-          <input type="text" name="cantidadProductos" value="<?php echo isset($venta['cantidadProductos']) ? $venta['cantidadProductos'] : ''; ?>" class="input-control" ></input>
-          <?php
-          if (isset($_POST["actualizarVenta"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $cantidadProductos = $_POST["cantidadProductos"];
-                if(empty($cantidadProductos)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^[0-9]+$/", $cantidadProductos)){
-                        echo "<p class='p'>Ingrese un código válido</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+          <input type="text"  id="cantidadProductos" name="cantidadProductos" value="<?php echo isset($venta['cantidadProductos']) ? $venta['cantidadProductos'] : ''; ?>" class="input-control" ></input>
+         <span class="p" id="cantidadError"></span>
           </div>
+          
         <div class="input-box">
             <label for="total">Total de la venta:</label>
-            <input type="text" name="total" value="<?php echo isset($venta['total']) ? $venta['total'] : ''; ?>" class="input-control"></input>
-            <?php
-            if (isset($_POST["actualizarVenta"])) {
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                $total = $_POST["total"];
-                if(empty($total)){
-                    echo"<p class='p'>El campo es obligatorio</p>";
-                    $valida = false;
-                }else{
-                    if(!preg_match("/^\d+(\.\d{1,2})?$/", $total)){
-                        echo "<p class='p'>El campo no tiene el formato correcto</p>";
-                        $valida = false;
-                    }
-                }
-            }
-        }
-            ?>
+            <input type="text"  id="total" name="total" value="<?php echo isset($venta['total']) ? $venta['total'] : ''; ?>" class="input-control"></input>
+            <span class="p" id="totalError"></span>
         </div>
 
 
@@ -142,6 +123,32 @@ if(isset($_POST["actualizarVenta"])){
 }
 ?>
 </body>
+<script>
+    function validarFormulario(){
+        document.getElementById("cantidadError").textContent = "";
+        document.getElementById("totalError").textContent = "";
+        
+        var cantidad = document.getElementById('cantidadProductos').value;
+        if(cantidad.trim()== ""){
+            document.getElementById("cantidadError").textContent = "La cantidad del producto es requerida";
+            return false;
+        }else if(!/^[0-9]+$/.test(cantidad)){
+             document.getElementById("cantidadError").textContent = "La cantidad debe ser numerica ";
+            return false;
+        }
+        
+        var total = document.getElementById('total').value;
+        if(total.trim()== ""){
+            document.getElementById("totalError").textContent = "La compra total es requerida";
+            return false;
+        }else if(!/^[0-9]+$/.test(total)){
+             document.getElementById("totalError").textContent = "El total no es numerico, sin puntos ";
+            return false;
+        }
+        
+        return  true;
+    }
+</script>
 <footer style="min-height:30vh">
     <h2 id="contacto" >PRENDAPP</h2>
     <br>    
