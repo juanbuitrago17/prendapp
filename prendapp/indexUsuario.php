@@ -15,15 +15,17 @@ if(empty($usuario) || empty($rol)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="styleCrud.css">
+    <link  rel="stylesheet" href="styleCrudsTable.css">
     <link rel="stylesheet" href="styleTablasYBotones.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     
     <title>BASE DE DATOS</title>
 </head>
 <body>
-
-<nav class="navbar navbar-light bg-ligh fixed-top"  style="background-color:purple;" >
+    <nav class="navbar navbar-light bg-ligh fixed-top"  style="background-color:purple;" >
   <div class="container-fluid"  >
     <a class="navbar-brand" >
     <h3 style="color: white;"><img src="Imagenes/Prendapp-1.png"   alt="logo" width="80" height="50">PRENDAPP</h3>
@@ -63,26 +65,23 @@ if(empty($usuario) || empty($rol)){
   </div>
 </nav>
 
-<br><br><br><br><br><br>
+<br><br><br><br>
        
     <div style="text-align:center;" >
         <h1 style="color: blueviolet;">Bienvenido</h1>
         <p >Listado De Usuarios</p>
         
     </div>
-    <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Imprimir' name='excel' onclick="window.print();" class='button '>
-    <input type='button' style="font-size:20px;padding:2px;width:100px;" value='Excel' name='agregar' onclick="paginaExcel();" class='button '>
     <input type='button' style="font-size:20px;padding:2px;width:80px;" value='Crear' name='agregar' onclick='paginaRegistro()' class='button '><br><br>
-    <?php
+<?php
     include_once "conexion.php";
 
     $sql= mysqli_query($conn,"SELECT * FROM usuario");
     if($sql !== false){
         if(mysqli_num_rows($sql)> 0){
           ?>
-            
-            <table style=" padding-top: 40px;" id="usuario">
-            <thead>
+<table id="example" class="display nowrap" style="width:100%">
+       <thead>
             <tr>
             <th>Cedula</th><th>Nombre</th>
             <th>FechaCreacion</th>
@@ -97,6 +96,7 @@ if(empty($usuario) || empty($rol)){
             <th>Eliminar</th>
             </tr>
         </thead>
+        <tbody>
             <?PHP
             while ($mostrar = mysqli_fetch_assoc($sql)){ 
             echo "<tr><td>".$mostrar['cedula']. "</td>
@@ -119,7 +119,7 @@ if(empty($usuario) || empty($rol)){
             </form></td></tr>";
             }
         }
-            echo "</table>";
+            
 }
             
    
@@ -131,10 +131,68 @@ if(empty($usuario) || empty($rol)){
    
 
 ?>
-<br><br><br><br>
+</tbody></table>
+ <br><br>
 
 
-<footer class="pie-pagina">
+   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js" type="text/Javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" type="text/Javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" type="text/Javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js" type="text/Javascript"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js" type="text/Javascript"></script>
+<script>
+   $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: {
+           buttons: [
+               {
+                   extend: 'copy',
+                   text: 'Copiar',
+                   className: 'btn btn-secondary'
+               },
+               {
+                   extend: 'excel',
+                   text: 'Exportar a Excel',
+                   className: 'btn btn-success'
+               },
+               {
+                   extend: 'pdf',
+                   text: 'Exportar a pdf',
+                   className: 'btn btn-danger'
+               },
+               {
+                   extend: 'colvis',
+                   text: 'Filtrar columnas'
+               }
+               ]
+             
+        }
+        /*buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]*/
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
+</script>
+<script>
+    function paginaRegistro(){
+        window.location = "crearUsuario.php";
+    }
+</script> 
+<script>
+  document.querySelector('.navbar-toggler').style.backgroundColor = 'whitesmoke';
+</script>
+</body>
+<footer style="min-height:40vh" class="pie-pagina">
             <h2 class="h-2">PRENDAPP</h2>
             
            
@@ -163,41 +221,4 @@ if(empty($usuario) || empty($rol)){
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright ©2023 My Website. Todos los derechos reservados a PRENDAPP.</p>
         </footer>
-
- 
-
-    
-<script>
-    function paginaRegistro(){
-        window.location = "crearUsuario.php";   
-    }
-    function paginaExcel(){
-        window.location = "generalExcelUsuario.php"; 
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script> $('#usuario thead th').each( function () {
-        var title = $('#usuario tfoot th').eq( $(this).index() ).text();
-       // $(this).html( '&amp;lt;input type=&amp;quot;text&amp;quot; placeholder=&amp;quot;Search '+title+'&amp;quot; /&amp;gt;' );
-    } );
- 
-    // DataTable
-    var table = $('#usuario').DataTable();
- 
-    // Apply the search
-    table.columns().eq( 0 ).each( function ( colIdx ) {
-        $( 'input', table.column( colIdx ).header() ).on( 'keyup change', function () {
-            table
-                .column( colIdx )
-                .search( this.value )
-                .draw();
-        } );
-    } );</script>
-
-<script>
-  document.querySelector('.navbar-toggler').style.backgroundColor = 'whitesmoke';
-</script>
-</body>
 </html>
